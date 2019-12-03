@@ -1,0 +1,80 @@
+// variables
+$link: #428bca;
+
+html {
+	font-family: 'lato', arial, helvetica, sans-serif !important;
+	height: 100vh;
+	overflow-x: hidden;
+}
+
+body {
+    height: 100vh;
+    font-size: 16px;
+	overflow-x: hidden;
+}
+
+.full-hidden {
+    width: 100%;
+    overflow: hidden;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.relative {
+    position: relative;
+}
+
+.img-responsive {
+	max-width: 100%;
+	max-height: 100%;
+	display: inline-block;
+}
+
+.link {
+	color: $link;
+	text-decoration: underline;
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+#toast-container > div {
+    opacity:1;
+}
+
+.custom-scrollBar {
+	overflow-y: auto;
+	overflow-x: auto;
+
+	&::-webkit-scrollbar {
+		width: 5px;
+		height: 10px;
+		border-radius: 16px;
+	}
+
+	&::-webkit-scrollbar-track-piece {
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		&:vertical {
+			height: 5px;
+			background-color: rgba(0, 0, 0, .6);
+			border-radius: 3px;
+		}
+		
+		&:horizontal {
+			width: 5px;
+			background-color: rgba(0, 0, 0, .6);
+			border-radius: 3px;
+		}
+	}
+}
