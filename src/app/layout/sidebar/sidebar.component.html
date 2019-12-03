@@ -1,0 +1,31 @@
+<div id="sidebar" class="h-100" [ngClass]="{'short': isShort}" (mouseenter)="mouseEnterEvent()" (mouseleave)="mouseLeaveEvent()">
+    <header class="top d-flex flex-row align-items-center">
+      <div class="logo d-flex flex-row align-items-center">
+        <span class="icon">
+          <i class="fas fa-bars"></i>
+        </span>
+  
+        <a routerLink="/home" title="Home" class="text">Menu</a>
+      </div>
+  
+      <span class="fix-menu text-right" [ngClass]="{'not-fixed': !menuFixed}" (click)="controlFixMenu()">
+        <i class="fas fa-thumbtack"></i>
+      </span>
+    </header>
+  
+    <nav class="content custom-scrollBar">
+      <ul>
+        <li class="category" *ngFor="let item of menuList">
+          <a [routerLink]="item.uri" title="{{ item.name }}" class="item d-flex flex-row align-items-center">
+            <span class="icon">
+              <i class="fas fa-{{ item.icon }}"></i>
+            </span>
+  
+            <span class="text">{{ item.name }}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!--/content-->
+  </div>
+  <!--/sidebar-->

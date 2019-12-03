@@ -1,0 +1,157 @@
+// variables
+$sidebar: #2c323f;
+$sidebar-width: 250px;
+$sidebar-small: 50px;
+$active-link: #0288d1;
+$category-open: rgba(255, 255, 255, .04);
+
+@mixin control-sidebar($display) {
+    &::-webkit-scrollbar-track-piece {
+        display: $display;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        display: $display;
+
+        &:vertical,
+        &:horizontal {
+			background-color: rgba(255, 255, 255, .6);
+		}
+    }
+}
+
+@mixin transition($property, $delay, $animation) {
+	-webkit-transition: $property $delay $animation;
+	   -moz-transition: $property $delay $animation;
+	    -ms-transition: $property $delay $animation;
+	     -o-transition: $property $delay $animation;
+	        transition: $property $delay $animation;
+}
+
+#sidebar {
+    background-color: $sidebar;
+    width: $sidebar-width;
+    @include transition(all, .1s, ease-in-out);
+
+    .top {
+        background-color: darken($sidebar, 5%);
+        height: 50px;
+        padding: 0 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, .2);
+
+        .logo {
+            width: 85%;
+            color: #fff;
+
+            .icon {
+                display: inline-block;
+                margin: 0 10px 0 0;
+                font-size: 22px;
+            }
+
+            .text {
+                font-size: 20px;
+                color: #fff;
+                font-family: 'latoBold';
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+        } //.logo
+
+        .fix-menu {
+            display: inline-block;
+            width: 15%;
+            height: 15px;
+            overflow: hidden;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+
+            &.not-fixed {
+                color: darken(#fff, 15%);
+                height: 20px;
+            }
+        }
+
+    } //.top
+
+    .content {
+        height: calc(100% - 50px);
+        @include control-sidebar(none);
+
+        &:hover {
+            @include control-sidebar(block);
+        }
+
+        li {
+            display: block;
+        }
+
+        .category {
+            padding: 0 15px 0 0;
+
+            .item {
+                display: block;
+                padding: 10px 10px 10px 15px;
+                border-radius: 0 25px 25px 0;
+                cursor: pointer;
+                color: #fff;
+                font-size: 16px;
+
+                &:hover {
+                    text-decoration: none;
+                    background-color: darken($sidebar, 3%);
+                }
+
+                &.active {
+                    background-color: $active-link;
+                }
+
+                .icon {
+                    width: 20px;
+                    margin: 0 5px 0 0;
+                    display: inline-block;
+                    text-align: center;
+                }
+
+                .text {
+                    text-decoration: none;
+                    width: calc(100% - 25px);
+                    padding: 0 5px 0 0;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    color: #fff;
+                }
+
+            } //.item
+
+        } //.category
+
+    } //.content
+
+    &.short {
+        width: $sidebar-small;
+
+        .text,
+        .fix-menu,
+        .arrow {
+            display: none !important;
+        }
+
+        &.mouse-over {
+            width: $sidebar-width;
+
+            .text,
+            .fix-menu,
+            .arrow {
+                display: block !important;
+            }
+        }
+
+    } //&.short
+
+} //#sidebar
