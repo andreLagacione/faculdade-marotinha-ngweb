@@ -1,1 +1,26 @@
-<app-sidebar></app-sidebar>
+<div id="container-app" class="d-flex flex-row h-100 w-100" [ngClass]="{'short-menu': toggleMenu}">
+  <aside id="sidebar">
+      <app-sidebar (toggleMenuEvent)="toggleMenu = !$event"></app-sidebar>
+  </aside>
+
+  <div id="base-app" class="w-100">
+      <header id="top">
+          <!-- <app-top></app-top> -->
+      </header>
+
+      <main id="content" class="custom-scrollBar">
+          <router-outlet></router-outlet>
+
+          <div id="loader" class="d-flex flex-row justify-content-center align-items-center" *ngIf="showLoader">
+              <div class="content text-center">
+                  <div class="icon">
+                      <i class="fas fa-spinner fa-pulse"></i>
+                  </div>
+          
+                  <h2 class="title">Loading...</h2>
+              </div>
+          </div>            
+      </main>
+  </div>
+  <!--/base-app-->
+</div>
