@@ -21,10 +21,10 @@ export class SidebarComponent implements OnInit {
 
   constructor() { }
 
-	/**
-	 * Programar para o iten do menu ficar destacado quando estiver na pagina diferente da home,
-	 * se estou na tela de consulta de cte o item de menu que da acesso a essa tela fica azul.
-	 */
+  /**
+  * Programar para o iten do menu ficar destacado quando estiver na pagina diferente da home,
+  * se estou na tela de consulta de cte o item de menu que da acesso a essa tela fica azul.
+  */
 
   ngOnInit() {
   }
