@@ -1,0 +1,27 @@
+<ul id="pagination">
+	<li class="control-navigation">
+		<button type="button" title="First page" [disabled]="activePage === 1" (click)="changePage(1)">
+			<i class="fa fa-angle-double-left"></i>
+		</button>
+	</li>
+	<li class="control-navigation">
+		<button type="button" title="Back" [disabled]="activePage === 1" (click)="changePage(activePage - 1)">
+			<i class="fa fa-angle-left"></i>
+		</button>
+	</li>
+
+	<li class="page" *ngFor="let page of pages; let i = index">
+		<button type="button" title="{{ page.name }}" [disabled]="page.active" [ngClass]="{'active': page.active}" (click)="changePage(page.name, page)">{{ page.name }}</button>
+	</li>
+
+	<li class="control-navigation">
+		<button type="button" title="Next" [disabled]="activePage === totalPages" (click)="changePage(activePage + 1)">
+			<i class="fa fa-angle-right"></i>
+		</button>
+	</li>
+	<li class="control-navigation">
+		<button type="button" title="Last page" [disabled]="activePage === totalPages" (click)="changePage(totalPages)">
+			<i class="fa fa-angle-double-right"></i>
+		</button>
+	</li>
+</ul>

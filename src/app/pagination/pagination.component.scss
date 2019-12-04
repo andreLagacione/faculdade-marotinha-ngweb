@@ -1,0 +1,83 @@
+// variáveis
+$white: #fff;
+$border: #afcef3;
+$text: #575962;
+
+#pagination {
+    overflow: hidden;
+    margin: 0;
+
+    li {
+        float: left;
+
+        button {
+            background-color: $white;
+            border: 1px solid $border;
+            border-right: 0;
+            font-size: 14px;
+            line-height: 14px;
+            padding: 9px 0;
+            display: block;
+            height: 32px;
+            width: 32px;
+            text-align: center;
+            color: $text;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken($white, 10%);
+                text-decoration: none;
+            }
+        }
+
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-last-child(1),
+        &:nth-last-child(2) {
+            button {
+                font-size: 14px;
+                text-align: center;
+                line-height: 32px;
+                padding: 0;
+            }
+        }
+
+        &:nth-child(1) {
+            button {
+                border-radius: 3px 0 0 3px;
+            }
+        }
+
+        &:nth-last-child(1) {
+            button {
+                border-radius: 0 3px 3px 0;
+                border-right: 1px solid $border;
+            }
+        }
+
+        button {
+            &[disabled] {
+                background-color: darken($white, 5%);
+                color: lighten($text, 25%);
+                cursor: not-allowed;
+
+                &:hover {
+                    background-color: darken($white, 5%);
+                }
+            }
+            
+            &.active {
+                background-color: $border;
+                color: $white;
+                cursor: not-allowed;
+
+                &:hover {
+                    background-color: $border;
+                }
+            }
+
+        } //button
+        
+    } //li
+
+} //#pagination
