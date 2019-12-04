@@ -1,0 +1,27 @@
+<ng-template #modalConfirm>
+	<div id="confirm-modal">
+		<div class="header">
+			<h4 class="title pull-left">{{ title }}</h4>
+			<button type="button" class="close" aria-label="Close" (click)="close()">
+				<i class="fas fa-times"></i>
+			</button>
+		</div>
+		<!--/header-->
+
+		<div class="body text-center confirm">
+			<p class="text">{{ message }}</p>
+
+			<app-buttons [classes]="'secondary auto'" [text]="'Cancel'" [type]="'button'" (eventClick)="close()">
+			</app-buttons>
+
+			<app-buttons class="ml-3" [classes]="'primary auto'" [text]="'Confirm'" [type]="'button'"
+				(eventClick)="confirm()" *ngIf="!processing"></app-buttons>
+
+			<app-buttons class="ml-3" [icon]="'fas fa-spinner fa-pulse'" [classes]="'primary auto'"
+				[text]="'Processing'" [type]="'button'" [disabled]="true" *ngIf="processing"></app-buttons>
+
+		</div>
+		<!--/body-->
+	</div>
+	<!--/confirm-modal-->
+</ng-template>
