@@ -5,5 +5,6 @@ const server = protocol + '//' + host;
 
 export const environment = {
 	production: false,
-	url: `${server}:8080/api`
+	// url: `${server}:8080/api`
+	url: `http://localhost:8080`
 };
