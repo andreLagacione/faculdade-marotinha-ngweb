@@ -18,13 +18,15 @@ import { ControlElementsService } from './shared/services/control-elements.servi
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TopComponent } from './layout/top/top.component';
 
 registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    TopComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ registerLocaleData(localePt);
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-		ReactiveFormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot(),
   ],
   providers: [
@@ -47,7 +49,7 @@ registerLocaleData(localePt);
       useClass: HashLocationStrategy
     }
   ],
-	schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
