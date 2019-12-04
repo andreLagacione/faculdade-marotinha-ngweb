@@ -1,0 +1,23 @@
+<div class="backdrop" (click)="close()" [@showHiddenBackdrop]="isOpen ? 'show' : 'hidden'"></div>
+
+<div id="sidebar-filter" [@openCloseFiltro]="isOpen ? 'open' : 'close'">
+	<div class="header">
+		<h4 class="title pull-left">Filters</h4>
+		<button type="button" class="close" aria-label="Close" (click)="close()">
+			<i class="fas fa-times"></i>
+		</button>
+	</div>
+	<!--/header-->
+
+	<div class="body" (keydown)="checkPressEnterButton($event)">
+		<ng-content select="content"></ng-content>
+	</div>
+	<!--/body-->
+
+	<footer class="footer text-right">
+		<app-buttons [classes]="'auto'" [text]="'Clear'" [type]="'button'" (eventClick)="clear()"></app-buttons>
+		<app-buttons class="ml-2" [classes]="'primary auto'" [text]="'Filter'" [type]="'button'"
+			(eventClick)="filter()"></app-buttons>
+	</footer>
+</div>
+<!--/sidebar-filter-->
