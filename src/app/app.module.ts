@@ -6,7 +6,11 @@ import localePt from '@angular/common/locales/pt';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // modules
-import { ToastrModule } from 'ngx-toastr';
+import { ToasterModule } from './toaster/toaster.module';
+import { PaginationModule } from './pagination/pagination.module';
+import { ButtonsModule } from './buttons/buttons.module';
+import { ConfirmModalModule } from './confirm-modal/confirm-modal.module';
+import { SidebarFilterModule } from './sidebar-filter/sidebar-filter.module';
 
 // routes
 import { AppRoutingModule } from './app-routing.module';
@@ -35,7 +39,11 @@ registerLocaleData(localePt);
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(),
+    ButtonsModule,
+    ToasterModule.forRoot(),
+    PaginationModule.forRoot(),
+    ConfirmModalModule.forRoot(),
+    SidebarFilterModule.forRoot(),
   ],
   providers: [
     Title,
