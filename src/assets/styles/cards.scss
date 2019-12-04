@@ -1,0 +1,140 @@
+// variaveis
+$white: #fff;
+$shadow: rgba(0, 0, 0, .3);
+$shadow-data: #afcef3;
+$borda: #c5d0e1;
+$cor-icone: #2870b2;
+$back: #f4f5f8;
+$texto: #3b495e;
+
+.card-component {
+    background-color: $white;
+    box-shadow: 1px 1px 1px 1px $shadow;
+
+    header.top {
+        border-bottom: 1px solid $borda;
+        height: 50px;
+        overflow: hidden;
+
+        .icone {
+            float: left;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 18px;
+            color: $cor-icone;
+            background-color: darken($back, 3%);
+            line-height: 50px;
+            margin: 0 10px 0 0;
+        }
+
+        .name {
+            font: 18px/50px 'latoBold';
+            color: $texto;
+        }
+
+        .subtitulo {
+            font-size: 14px;
+            color: $texto;
+        }
+
+        &.no-boder {
+            height: auto;
+            padding: 50px 0 0;
+            border: 0;
+
+            .name {
+                color: $cor-icone;
+                line-height: 16px;
+                margin: 0 0 15px;
+            }
+        }
+
+        &.tabs {
+            height: 70px;
+
+            .tab {
+                display: inline-block;
+                padding: 0 30px;
+                border-bottom: 4px solid transparent;
+                font-size: 14px;
+                color: $texto;
+                text-transform: uppercase;
+                font-weight: 700;
+                height: 100%;
+                line-height: 70px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: darken(#fff, 10%);
+                }
+
+                &.active {
+                    color: $cor-icone;
+                    border-color: $cor-icone;
+
+                    &:hover {
+                        background-color: #fff;
+                    }
+                }
+
+                .icon {
+                    display: inline-block;
+                    margin: 0 5px 0 0;
+                }
+            }
+
+        } //.tabs
+    }
+
+    .content {
+        padding: 20px;
+
+        .selecionar-data {
+            label {
+                font-weight: 700;
+                font-size: 12px;
+                color: $texto;
+                display: block;
+                margin: 0 0 5px;
+            }
+
+            .periodo,
+            .data {
+                width: 45px;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                color: $texto;
+                font-size: 14px;
+                background-color: $back;
+                border: 1px solid $borda;
+                box-shadow: inset 0px 1px 0 0 $shadow-data;
+                float: left;
+            }
+
+            .periodo {
+                border-right: 0;
+
+                &.ate {
+                    border-left: 0;
+                }
+            }
+
+            .data {
+                width: 150px;
+            }
+
+        } //.selecionar-data
+    }
+
+    .bottom {
+        background-color: darken($back, 3%);
+        padding: 10px 20px;
+
+        &.no-border {
+            background-color: transparent;
+        }
+    }
+
+} //.card-component

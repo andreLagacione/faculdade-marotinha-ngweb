@@ -1,0 +1,243 @@
+// variaveis
+$default: #afcef3;
+$ativo: #2870b2;
+$sucesso: #6f9e32;
+$erro: #ec393d;
+$alerta: #ffc107;
+$corTexto: #3b495e;
+$corBorda: #c5d0e1;
+$shadow-disabled: rgba(149, 163, 183, 0.3);
+$back-disabled: #e5edf4;
+$icone-valor: #555;
+
+.form-group {
+    position: relative;
+
+    label {
+        font-family: 'latoBold';
+        font-size: 0.750em;
+        color: $corTexto;
+        display: block;
+        text-transform: uppercase;
+    }
+
+    .texto-info {
+        display: block;
+        font-size: 0.750em;
+        text-align: right;
+        position: absolute;
+        right: 15px;
+        bottom: -15px;
+
+        &.erro {
+            color: $erro;
+        }
+
+        &.sucesso {
+            color: $sucesso;
+        }
+
+        &.alerta {
+            color: $alerta;
+        }
+    }
+}
+
+.inputs-form {
+    width: 100%;
+    height: 40px;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: inset 0px 1px 0 0 $default;
+    border: solid 1px $corBorda;
+    font-size: 0.750em;
+    text-align: left;
+    color: $corTexto;
+    font-weight: 400;
+    padding: 10px;
+
+    &.itens-por-pagina {
+        background-color: #fff;
+        background-position: 90% center;
+    }
+
+    &:focus {
+        box-shadow: inset 0px 1px 0 0 $ativo;
+        border-top-color: $ativo;
+    }
+
+    &.sucesso {
+        box-shadow: inset 0px 1px 0 0 $sucesso;
+        border-top-color: $sucesso;
+    }
+
+    &.erro {
+        box-shadow: inset 0px 1px 0 0 $erro !important;
+        border-top-color: $erro !important;
+    }
+
+    &.alerta {
+        box-shadow: inset 0px 1px 0 0 $alerta;
+        border-top-color: $alerta;
+    }
+
+	&[disabled],
+	&[readonly] {
+        box-shadow: inset 0 2px 0 0 $shadow-disabled;
+        background-color: $back-disabled;
+        cursor: not-allowed;
+        opacity: 1 !important;
+    }
+
+    &.textarea {
+        resize: none;
+        height: 150px;
+	}
+
+	&.with-button {
+		width: calc(100% - 50px);
+	}
+
+	&.upper {
+		text-transform: uppercase;
+	}
+}
+
+.label-custom-checkbox {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    cursor: pointer;
+
+    &:before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        border-radius: 2px;
+        background-color: #fff;
+        border: solid 1px $corBorda;
+    }
+
+    &:after {
+        content: "";
+        padding: 2px;
+        position: absolute;
+        width: 8px;
+        height: 12px;
+        border: solid $ativo;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+        top: 3px;
+        left: 7px;
+        display: none;
+    }
+
+    &.todos {
+        margin: 4px 0 0 0;
+
+        &:after {
+            border-width: 0 0 3px;
+            transform: rotate(0deg);
+            width: 13px;
+            height: auto;
+            top: 5px;
+            left: 4px;
+        }
+	}
+
+	&.radio {
+		&:before {
+			float: left;
+			border-radius: 50%;
+		}
+
+		&:after {
+			width: 10px;
+			height: 10px;
+			top: 5px;
+			left: 5px;
+			border: 0;
+			background-color: $ativo;
+			border-radius: 50%;
+		}
+	}
+
+	&.disabled {
+		cursor: not-allowed;
+
+		&:before {
+			background-color: $back-disabled;
+		}
+	}
+
+} //.label-custom-checkbox
+
+.custom-checkbox:checked + .label-custom-checkbox:after {
+    display: block;
+}
+
+.box-de-ate {
+    height: 40px;
+
+    .texto {
+        box-shadow: inset 0px 1px 0 0 $default;
+        border: solid 1px $corBorda;
+        border-right: 0;
+        float: left;
+        width: 10%;
+        height: 40px;
+        background-color: darken(#fff, 10%);
+        text-align: center;
+        font-size: 14px;
+        color: $corTexto;
+        line-height: 40px;
+
+        &:nth-child(3) {
+            border-left: 0;
+        }
+    }
+
+    .data {
+        width: 40%;
+        float: left;
+    }
+
+} //.box-de-ate
+
+.toggle-tipo {
+	font-size: 12px;
+	position: absolute;
+    top: 0;
+    right: 16px;
+}
+.icone-valor {
+	width: 50px;
+	float: left;
+	height: 40px;
+	box-shadow: inset 0px 1px 0 0 $default;
+	border: solid 1px $corBorda;
+	background-color: $back-disabled;
+	font-size: 14px;
+	text-align: center;
+	padding: 10px 0;
+	color: $icone-valor;
+}
+
+.descricao-input {
+	font-size: 11px;
+}
+
+.mt-25px {
+	margin-top: 25px;
+}
+
+.mt-35px {
+	margin-top: 35px;
+}
+
+.legenda {
+	font-size: 11px;
+}

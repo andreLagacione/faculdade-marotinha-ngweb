@@ -1,0 +1,51 @@
+// variables
+$back-tooltip: #2A3F54;
+
+.tooltip {
+    &.customTooltip {
+        .tooltip-arrow:before,
+        .tooltip-arrow {
+			border-top-color: $back-tooltip;
+			border-bottom-color: $back-tooltip;
+		}
+
+		.tooltip-inner {
+            background-color: $back-tooltip;
+            color: #fff;
+		}
+
+		&.tooltip-left {
+			.tooltip-arrow::before,
+			.tooltip-arrow {
+				border-left-color: $back-tooltip;
+				border-right-color: $back-tooltip;
+				border-top-color: transparent;
+				border-bottom-color: transparent;
+			}
+		}
+	}
+
+	&.blackTooltip {
+        .tooltip-arrow:before,
+        .tooltip-arrow {
+            border-top-color: #000;
+            border-bottom-color: #000;
+        }
+
+        .tooltip-inner {
+            background-color: #000;
+            color: #fff;
+        }
+
+		&.tooltip-left,
+		&.tooltip-right {
+			.tooltip-arrow::before,
+			.tooltip-arrow {
+				border-left-color: #000;
+				border-right-color: #000;
+				border-top-color: transparent;
+				border-bottom-color: transparent;
+			}
+		}
+    }
+}
