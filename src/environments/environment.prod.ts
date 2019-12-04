@@ -4,6 +4,6 @@ const host = base.host;
 const server = protocol + '//' + host;
 
 export const environment = {
-  production: false,
-  url: `${server}:8080/api`
+	production: false,
+	url: `${server}:8080/api`
 };

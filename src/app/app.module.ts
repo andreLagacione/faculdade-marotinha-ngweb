@@ -27,37 +27,37 @@ import { TopComponent } from './layout/top/top.component';
 registerLocaleData(localePt);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SidebarComponent,
-    TopComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ButtonsModule,
-    ToasterModule.forRoot(),
-    PaginationModule.forRoot(),
-    ConfirmModalModule.forRoot(),
-    SidebarFilterModule.forRoot(),
-  ],
-  providers: [
-    Title,
-    ControlElementsService,
-    {
-      provide: localePt,
-      useValue: 'pt-BR'
-    },
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy
-    }
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		SidebarComponent,
+		TopComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		HttpClientModule,
+		FormsModule,
+		ReactiveFormsModule,
+		ButtonsModule,
+		ToasterModule.forRoot(),
+		PaginationModule.forRoot(),
+		ConfirmModalModule.forRoot(),
+		SidebarFilterModule.forRoot(),
+	],
+	providers: [
+		Title,
+		ControlElementsService,
+		{
+			provide: localePt,
+			useValue: 'pt-BR'
+		},
+		{
+			provide: LocationStrategy,
+			useClass: HashLocationStrategy
+		}
+	],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

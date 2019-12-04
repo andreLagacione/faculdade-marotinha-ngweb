@@ -16,7 +16,6 @@ import { SidebarFilterService } from 'src/app/sidebar-filter/services/sidebar-fi
 import { PaginationService } from 'src/app/pagination/services/pagination.service';
 import { ConfirmModalService } from 'src/app/confirm-modal/services/confirm-modal.service';
 import { BaseResourceService } from '../services/base-resource.service';
-import { CheckPermissionsService } from '../services/check-permissions.service';
 
 export abstract class BaseResouceListComponent<T extends BaseResourceModel> implements OnDestroy {
 	public resourceList: T[] = [];
@@ -36,7 +35,6 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 	protected sidebarFilterService: SidebarFilterService;
 	protected paginationService: PaginationService;
 	protected confirmModalService: ConfirmModalService;
-	protected checkPermissionsService: CheckPermissionsService;
 
 	constructor(
 		protected injector: Injector,
@@ -47,7 +45,6 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 		this.router = injector.get(Router);
 		this.paginationService = injector.get(PaginationService);
 		this.confirmModalService = injector.get(ConfirmModalService);
-		this.checkPermissionsService = injector.get(CheckPermissionsService);
 
 		this.confirmModalService.confirmEvent$
 			.pipe(
@@ -169,9 +166,5 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 		}
 
 		return item;
-	}
-
-	public checkPermission(roles: string[]) {
-		return this.checkPermissionsService.checkPermission(roles);
 	}
 }

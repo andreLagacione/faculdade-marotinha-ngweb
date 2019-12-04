@@ -8,7 +8,6 @@ import { BaseResourceModel } from '../models/base-resource.model';
 
 // services
 import { ToasterService } from 'src/app/toaster/services/toaster.service';
-import { CheckPermissionsService } from '../services/check-permissions.service';
 import { BaseResourceService } from '../services/base-resource.service';
 import { takeUntil } from 'rxjs/operators';
 
@@ -21,7 +20,6 @@ export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel>
 	public registerForm: FormGroup;
 	protected activatedRoute: ActivatedRoute;
 	protected toasterService: ToasterService;
-	protected checkPermissionsService: CheckPermissionsService;
 
 	constructor(
 		protected injector: Injector,
@@ -30,7 +28,6 @@ export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel>
 		this.toasterService = injector.get(ToasterService);
 		this.router = this.injector.get(Router);
 		this.activatedRoute = this.injector.get(ActivatedRoute);
-		this.checkPermissionsService = this.injector.get(CheckPermissionsService);
 
 		this.activatedRoute.params
 			.subscribe(
@@ -114,10 +111,6 @@ export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel>
 		}
 
 		return item;
-	}
-
-	public checkPermission(roles: string[]) {
-		return this.checkPermissionsService.checkPermission(roles);
 	}
 
 }
