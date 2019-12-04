@@ -2,15 +2,9 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import localePt from '@angular/common/locales/pt';
 
 // modules
-import { ToasterModule } from './toaster/toaster.module';
-import { PaginationModule } from './pagination/pagination.module';
-import { ButtonsModule } from './buttons/buttons.module';
-import { ConfirmModalModule } from './confirm-modal/confirm-modal.module';
-import { SidebarFilterModule } from './sidebar-filter/sidebar-filter.module';
 import { AlunoModule } from './aluno/aluno.module';
 
 // routes
@@ -38,14 +32,7 @@ registerLocaleData(localePt);
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		HttpClientModule,
-		FormsModule,
-		ReactiveFormsModule,
-		ButtonsModule,
 		AlunoModule,
-		ToasterModule.forRoot(),
-		PaginationModule.forRoot(),
-		ConfirmModalModule.forRoot(),
-		SidebarFilterModule.forRoot(),
 	],
 	providers: [
 		Title,
