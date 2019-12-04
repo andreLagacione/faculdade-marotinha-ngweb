@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 // services
@@ -11,13 +11,12 @@ import { takeUntil } from 'rxjs/operators';
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
 	private unsubscribe$: Subject<void> = new Subject<void>();
 	public toggleMenu = false;
 	public showLoader = false;
 
 	constructor(
-		private titleService: Title,
 		private controlElementsService: ControlElementsService
 	) {
 		this.controlElementsService.loaderControl$
@@ -27,10 +26,6 @@ export class AppComponent {
 			.subscribe(
 				_response => this.showLoader = _response
 			);
-	}
-
-	ngOnInit() {
-		this.titleService.setTitle('Home | Faculdade Marotinha');
 	}
 
 	ngOnDestroy() {
