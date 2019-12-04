@@ -1,0 +1,23 @@
+// variables
+$shadow: rgba(0, 0, 0, .4);
+$font: rgba(0, 0, 0, .87);
+
+@mixin transition($property, $delay, $animation) {
+	-webkit-transition: $property $delay $animation;
+	   -moz-transition: $property $delay $animation;
+	    -ms-transition: $property $delay $animation;
+	     -o-transition: $property $delay $animation;
+	        transition: $property $delay $animation;
+}
+
+#top {
+    height: 50px;
+    box-shadow: 1px 1px 2px 1px $shadow;
+    padding: 0 20px;
+
+    .title-page {
+        font-size: 22px;
+        color: $font;
+    }
+
+} //#top
