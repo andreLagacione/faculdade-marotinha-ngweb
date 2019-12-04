@@ -1,0 +1,8 @@
+<button [type]="type" class="button {{ classes }}" (click)="click()" [disabled]="disabled" [tooltip]="textTooltip"
+	[placement]="position || 'top'" [containerClass]="tooltipClass || 'customTooltip'">
+	<span class="icon">
+		<i class="{{ icon }}" *ngIf="icon"></i>
+		<img src="{{ linkImage }}" *ngIf="linkImage" />
+	</span>
+	{{ text }}
+</button>

@@ -1,0 +1,177 @@
+// variables
+$icons: #6196c6;
+
+$default: (
+    back: #fff,
+    text: #3b495e,
+    border: #c5d0e1,
+    back-hover: #dedede,
+    disabled-border: rgba(197, 208, 225, 0.5),
+    disabled-back: rgba(255, 255, 255, 0.1),
+    disabled-texo: rgba(59, 73, 94, 0.8),
+);
+
+$primary: (
+    back: #2870b2,
+    text: #fff,
+    border: #2870b2,
+    back-hover: #1e5281,
+    disabled-border: rgba(40, 112, 178, 0.3),
+    disabled-back: rgba(40, 112, 178, 0.3),
+    disabled-texo: rgba(255, 255, 255, 0.5),
+);
+
+$info: (
+    back: #17a2b8,
+    text: #fff,
+    border: #17a2b8,
+    back-hover: #0b92a7,
+    disabled-border: rgba(75, 205, 224, 0.5),
+    disabled-back: rgba(75, 205, 224, 0.5),
+    disabled-texo: rgba(255, 255, 255, 0.5),
+);
+
+$secondary: (
+    back: #e7f0f7,
+    text: #2870b2,
+    border: #afcef3,
+    back-hover: #f3f7fb,
+    disabled-border: rgba(40, 112, 178, 0.1),
+    disabled-back: rgba(40, 112, 178, 0.05),
+    disabled-texo: rgba(40, 112, 178, 0.8),
+);
+
+$danger: (
+    back: #de4246,
+    text: #fff,
+    border: #de4246,
+    back-hover: #b63f43,
+    disabled-border: #fcdfdf,
+    disabled-back: #fcdfdf,
+    disabled-texo: rgba(255, 255, 255, 0.3),
+);
+
+@mixin complement($back, $disabledd-border, $disabledd-back, $disabledd-text) {
+    &:hover {
+        background-color: $back;
+    }
+
+    &:active {
+        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, .3) inset;
+    }
+
+    &[disabled],
+    &.disabled {
+        background-color: $disabledd-back;
+        border-color: $disabledd-border;
+        color: $disabledd-text;
+        cursor: no-drop;
+
+        &:active {
+            box-shadow: none;
+        }
+    }
+}
+
+.button {
+    width: 165px;
+    height: 40px;
+    font-size: 0.875em;
+    color: map-get($default, text);
+    background-color: map-get($default, back);
+    border: 1px solid map-get($default, boder);
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+	padding: 0 10px;
+
+	&.big {
+		width: 230px;
+	}
+
+    &.thin {
+        width: 40px;
+    }
+
+    &.small {
+        height: 25px;
+    }
+
+    &.auto {
+        width: auto;
+    }
+
+    &.full {
+        width: 100%;
+    }
+
+    @include complement(
+        map-get($default, back-hover),
+        map-get($default, disabled-border),
+        map-get($default, disabled-back),
+        map-get($default, disabled-texo)
+    );
+
+    &.primary {
+        color: map-get($primary, text);
+        background-color: map-get($primary, back);
+        border-color: map-get($primary, border);
+
+        @include complement(
+            map-get($primary, back-hover),
+            map-get($primary, disabled-border),
+            map-get($primary, disabled-back),
+            map-get($primary, disabled-texo)
+        );
+    }
+
+    &.secondary {
+        color: map-get($secondary, text);
+        background-color: map-get($secondary, back);
+        border-color: map-get($secondary, border);
+
+        @include complement(
+            map-get($secondary, back-hover),
+            map-get($secondary, disabled-border),
+            map-get($secondary, disabled-back),
+            map-get($secondary, disabled-texo)
+        );
+    }
+
+    &.danger {
+        color: map-get($danger, text);
+        background-color: map-get($danger, back);
+        border-color: map-get($danger, border);
+
+        @include complement(
+            map-get($danger, back-hover),
+            map-get($danger, disabled-border),
+            map-get($danger, disabled-back),
+            map-get($danger, disabled-texo)
+        );
+    }
+
+    &.info {
+        color: map-get($info, text);
+        background-color: map-get($info, back);
+        border-color: map-get($info, border);
+
+        @include complement(
+            map-get($info, back-hover),
+            map-get($info, disabled-border),
+            map-get($info, disabled-back),
+            map-get($info, disabled-texo)
+        );
+    }
+
+    &.clean {
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+
+        &:active {
+            box-shadow: none;
+        }
+    }
+
+} //.button
