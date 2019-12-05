@@ -105,6 +105,12 @@ $danger: (
         width: 100%;
     }
 
+    &.for-table {
+        width: 25px;
+        height: 25px;
+        padding: 0;
+    }
+
     @include complement(
         map-get($default, back-hover),
         map-get($default, disabled-border),
