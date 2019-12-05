@@ -36,7 +36,7 @@ export class ConfirmModalComponent implements OnDestroy {
 					if (_response['open']) {
 						this.modalRef = this.modalService.show(this.modalRefElement);
 						this.title = _response['title'];
-						this.message = _response['text'];
+						this.message = _response['message'];
 						this.processName = _response['processName'];
 					} else {
 						this.close();
