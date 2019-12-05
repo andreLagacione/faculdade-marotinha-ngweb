@@ -1,55 +1,67 @@
 <header id="header-pagina" class="d-flex flex-row align-items-center justify-content-end">
-    <app-buttons [linkImage]="'assets/images/funil.svg'" [classes]="'auto'" [type]="'button'" [text]="'Mais Filtros'"
-        (eventClick)="controlarFiltros()"></app-buttons>
+    <!-- <app-buttons [linkImage]="'assets/images/funil.svg'" [classes]="'auto'" [type]="'button'" [text]="'Mais Filtros'"
+        (eventClick)="controlarFiltros()"></app-buttons> -->
+
+    <app-buttons [icon]="'fas fa-plus'" [classes]="'auto primary'" [type]="'button'" [text]="'Cadastrar'"
+        (eventClick)="editar()"></app-buttons>
 </header>
 
 <table class="default w-100 mt-3" *ngIf="resourceList.length">
-	<thead>
-		<tr>
-			<th>Nome</th>
-			<th>Idade</th>
-			<th>CPF</th>
-			<th>Telefone</th>
-		</tr>
-	</thead>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th class="col-acoes">Ações</th>
+        </tr>
+    </thead>
 
-	<tbody>
-		<tr *ngFor="let aluno of resourceList">
-			<td>{{ aluno.name }}</td>
+    <tbody>
+        <tr *ngFor="let aluno of resourceList">
+            <td>{{ aluno.name }}</td>
             <td>{{ aluno.age }}</td>
             <td>{{ aluno.cpf | cpfCnpj }}</td>
             <td>{{ aluno.phone | fone }}</td>
-		</tr>
-	</tbody>
+            <td class="col-acoes">
+                <app-buttons [icon]="'fas fa-edit'" [classes]="'auto for-table'" [type]="'button'"
+                    (eventClick)="editar(aluno.id)"></app-buttons>
+                
+                <app-buttons class="ml-2" [icon]="'fas fa-trash-alt'" [classes]="'auto for-table danger'" [type]="'button'"
+                    (eventClick)="editar(aluno.id)"></app-buttons>
+            </td>
+        </tr>
+    </tbody>
 </table>
 
 <div [hidden]="!resourceList.length">
-	<footer class="footer-pagina d-flex flex-row align-items-center justify-content-between mt-4">
-		<div class="paginacao w-50">
-			<app-pagination (changePageEvent)="changePage($event)"></app-pagination>
-		</div>
-		<!--/paginacao-->
+    <footer class="footer-pagina d-flex flex-row align-items-center justify-content-between mt-4">
+        <div class="paginacao w-50">
+            <app-pagination (changePageEvent)="changePage($event)"></app-pagination>
+        </div>
+        <!--/paginacao-->
 
-		<div class="itens-por-pagina d-flex flex-row align-items-center justify-content-end w-50">
-			<div class="info-page d-flex flex-row align-items-center mr-2">
+        <div class="itens-por-pagina d-flex flex-row align-items-center justify-content-end w-50">
+            <div class="info-page d-flex flex-row align-items-center mr-2">
                 Página:
-				<b>{{ (currentPage | toInt) + 1 }}</b> de
-				<b>{{ totalPages }}</b>
-			</div>
+                <b>{{ (currentPage | toInt) + 1 }}</b> de
+                <b>{{ totalPages }}</b>
+            </div>
 
-			<select name="itens-por-pagina" class="inputs-form select itens-por-pagina" (change)="changeItensPerPage($event.target.value)" [(ngModel)]="pageSize">
-				<option value="{{ item }}" *ngFor="let item of itensPerPage">{{ item }}</option>
-			</select>
-		</div>
-		<!--/itens-por-pagina-->
-	</footer>
+            <select name="itens-por-pagina" class="inputs-form select itens-por-pagina"
+                (change)="changeItensPerPage($event.target.value)" [(ngModel)]="pageSize">
+                <option value="{{ item }}" *ngFor="let item of itensPerPage">{{ item }}</option>
+            </select>
+        </div>
+        <!--/itens-por-pagina-->
+    </footer>
 </div>
 
 <div class="text-alert primary block lg" *ngIf="messageNoData">{{ messageNoData }}</div>
 
 <app-sidebar-filter (eventClear)="filterClear()">
-	<content>
-		<!-- <form novalidate [formGroup]="sidebarFormFilter">
+    <content>
+        <!-- <form novalidate [formGroup]="sidebarFormFilter">
 			<div class="form-group row">
 				<div class="col-md-6">
 					<label>Tipo CT-e</label>
@@ -67,7 +79,7 @@
 				</div>
 			</div>
 		</form> -->
-	</content>
+    </content>
 </app-sidebar-filter>
 
 <app-confirm-modal></app-confirm-modal>

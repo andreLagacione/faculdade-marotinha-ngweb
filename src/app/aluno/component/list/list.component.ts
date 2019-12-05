@@ -22,6 +22,8 @@ export class ListComponent extends BaseResouceListComponent<AlunoListModel> impl
 	}
 
 	ngOnInit() {
+		this.registerRoute = '/alunos/cadastrar';
+		this.editRoute = '/alunos/editar';
 		this.controlElementsService.pageName('Alunos');
 		this.getAllPageable();
 	}
