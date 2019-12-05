@@ -28,4 +28,9 @@ export class ListComponent extends BaseResouceListComponent<AlunoListModel> impl
 		this.getAllPageable();
 	}
 
+	protected getAllPageable() {
+		this.baseParamsPage = `?sort=name,asc&size=${this.pageSize}&page=${this.currentPage}`;
+		super.getAllPageable();
+	}
+
 }
