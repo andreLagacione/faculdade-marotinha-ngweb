@@ -12,11 +12,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 // services
 import { ControlElementsService } from './shared/services/control-elements.service';
+import { ErrorInterceptor } from './shared/services/http-request-interceptor';
 
 // components
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TopComponent } from './layout/top/top.component';
 
 registerLocaleData(localePt);
@@ -44,6 +45,11 @@ registerLocaleData(localePt);
 		{
 			provide: LocationStrategy,
 			useClass: HashLocationStrategy
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: ErrorInterceptor,
+			multi: true
 		}
 	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
