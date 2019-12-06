@@ -1,0 +1,79 @@
+<header id="header-pagina" class="d-flex flex-row align-items-center justify-content-end">
+    <!-- <app-buttons [linkImage]="'assets/images/funil.svg'" [classes]="'auto'" [type]="'button'" [text]="'Mais Filtros'"
+        (eventClick)="controlarFiltros()"></app-buttons> -->
+
+    <app-buttons [icon]="'fas fa-plus'" [classes]="'auto primary'" [type]="'button'" [text]="'Cadastrar'"
+        (eventClick)="create()"></app-buttons>
+</header>
+
+<table class="default w-100 mt-3" *ngIf="resourceList.length">
+    <thead>
+        <tr>
+            <th>Curso</th>
+            <th class="col-acoes">Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let curso of resourceList">
+            <td>{{ curso.nome }}</td>
+            <td class="col-acoes">
+                <app-buttons [icon]="'fas fa-edit'" [classes]="'auto for-table'" [type]="'button'"
+                    (eventClick)="editar(curso.id)"></app-buttons>
+                
+                <app-buttons class="ml-2" [icon]="'fas fa-trash-alt'" [classes]="'auto for-table danger'" [type]="'button'"
+                    (eventClick)="openConfirmModal(curso.id, curso.nome)"></app-buttons>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div [hidden]="!resourceList.length">
+    <footer class="footer-pagina d-flex flex-row align-items-center justify-content-between mt-4">
+        <div class="paginacao w-50">
+            <app-pagination (changePageEvent)="changePage($event)"></app-pagination>
+        </div>
+        <!--/paginacao-->
+
+        <div class="itens-por-pagina d-flex flex-row align-items-center justify-content-end w-50">
+            <div class="info-page d-flex flex-row align-items-center mr-2">
+                Página:
+                <b>{{ (currentPage | toInt) + 1 }}</b> de
+                <b>{{ totalPages }}</b>
+            </div>
+
+            <select name="itens-por-pagina" class="inputs-form select itens-por-pagina"
+                (change)="changeItensPerPage($event.target.value)" [(ngModel)]="pageSize">
+                <option value="{{ item }}" *ngFor="let item of itensPerPage">{{ item }}</option>
+            </select>
+        </div>
+        <!--/itens-por-pagina-->
+    </footer>
+</div>
+
+<div class="text-alert primary block lg" *ngIf="messageNoData">{{ messageNoData }}</div>
+
+<app-sidebar-filter (eventClear)="filterClear()">
+    <content>
+        <!-- <form novalidate [formGroup]="sidebarFormFilter">
+			<div class="form-group row">
+				<div class="col-md-6">
+					<label>Tipo CT-e</label>
+					<select class="inputs-form select" formControlName="tipoCte">
+						<option value="">Todos</option>
+						<option value="0">Normal</option>
+						<option value="1">Complementar</option>
+						<option value="2">Quinzenal</option>
+					</select>
+				</div>
+
+				<div class="col-md-6">
+					<label>Número da capa</label>
+					<input type="number" class="inputs-form" placeholder="Somente números" formControlName="numeroCapa" />
+				</div>
+			</div>
+		</form> -->
+    </content>
+</app-sidebar-filter>
+
+<app-confirm-modal></app-confirm-modal>
