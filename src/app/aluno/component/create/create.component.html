@@ -1,0 +1,80 @@
+<div class="card-component">
+    <form novalidate [formGroup]="registerForm" (ngSubmit)="save()">
+        <div class="content">
+            <div class="row form-group">
+                <div class="col-md-10">
+                    <label>Nome *</label>
+                    <input type="text" class="inputs-form" required formControlName="name"
+                        [ngClass]="{'erro': name.invalid && (name.dirty || name.touched)}" />
+
+                    <div class="texto-info erro" *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <small *ngIf="name.errors.required">Campo obrigatório</small>
+                        <small *ngIf="name.errors.minlength">O tamanho mínimo é de 3 caractéres</small>
+                        <small *ngIf="name.errors.maxlength">O tamanho máximo é de 3 caractéres</small>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <label>Idade *</label>
+                    <input type="number" class="inputs-form" required formControlName="age"
+                        [ngClass]="{'erro': age.invalid && (age.dirty || age.touched)}" />
+
+                    <div class="texto-info erro" *ngIf="age.invalid && (age.dirty || age.touched)">
+                        <small *ngIf="age.errors.required">Campo obrigatório</small>
+                        <small *ngIf="age.errors.min">Idade mínima é de 15 anos</small>
+                        <small *ngIf="age.errors.max">Idade máxima é de 150 anos</small>
+                    </div>
+                </div>
+            </div>
+            <!--/row-form-->
+
+            <div class="row form-group">
+                <div class="col-md-3">
+                    <label>CPF *</label>
+                    <input type="text" class="inputs-form" required formControlName="cpf"
+                        [ngClass]="{'erro': cpf.invalid && (cpf.dirty || cpf.touched)}" />
+
+                    <div class="texto-info erro" *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)">
+                        <small *ngIf="cpf.errors.required">Campo obrigatório</small>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Telefone *</label>
+                    <input type="text" class="inputs-form" required formControlName="phone"
+                        [ngClass]="{'erro': phone.invalid && (phone.dirty || phone.touched)}" />
+
+                    <div class="texto-info erro" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                        <small *ngIf="phone.errors.required">Campo obrigatório</small>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label>Cursos *</label>
+                    <ng-select
+                        [items]="cursosList | async"
+                        [multiple]="true"
+                        [closeOnSelect]="false"
+                        [searchable]="false"
+                        bindLabel="nome"
+                        placeholder="Selecione"
+                        (add)="selectedCursosEvent($event)">
+                    </ng-select>
+                </div>
+            </div>
+            <!--/row-form-->
+        </div>
+        <!--/content-->
+
+        <footer class="bottom">
+            <div class="text-right">
+                <app-buttons [icon]="'fas fa-save'" [classes]="'primary auto'" [type]="'submit'" [text]="'Salvar'"
+                    [disabled]="!registerForm.valid || !registerForm.dirty"></app-buttons>
+                
+                <app-buttons class="ml-2" [icon]="'fas fa-reply'" [classes]="'auto'" [type]="'button'"
+                    [text]="'Voltar'" (eventClick)="toBack()"></app-buttons>
+            </div>
+        </footer>
+    </form>
+</div>
+<!--/card-component-->
