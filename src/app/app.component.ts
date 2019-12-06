@@ -1,5 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 
 // services
 import { ControlElementsService } from './shared/services/control-elements.service';
@@ -24,7 +23,11 @@ export class AppComponent implements OnDestroy {
 				takeUntil(this.unsubscribe$)
 			)
 			.subscribe(
-				_response => this.showLoader = _response
+				_response => {
+					setTimeout(() => {
+						this.showLoader = _response;
+					});
+				}
 			);
 	}
 
