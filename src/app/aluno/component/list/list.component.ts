@@ -2,9 +2,13 @@ import { Component, OnInit, Injector } from '@angular/core';
 
 // services
 import { ControlElementsService } from 'src/app/shared/services/control-elements.service';
-import { BaseResouceListComponent } from 'src/app/shared/components/base-resource-list.component';
-import { AlunoModel } from '../../models/aluno.model';
 import { AlunoService } from '../../services/aluno.service';
+
+// component
+import { BaseResouceListComponent } from 'src/app/shared/components/base-resource-list.component';
+
+// model
+import { AlunoModel } from '../../models/aluno.model';
 
 @Component({
 	selector: 'app-list',
