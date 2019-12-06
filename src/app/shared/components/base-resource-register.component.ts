@@ -1,4 +1,4 @@
-import { OnInit, OnDestroy, Injector } from '@angular/core';
+import { OnDestroy, Injector } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -11,7 +11,7 @@ import { ToasterService } from 'src/app/toaster/services/toaster.service';
 import { BaseResourceService } from '../services/base-resource.service';
 import { takeUntil } from 'rxjs/operators';
 
-export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel> implements OnInit, OnDestroy {
+export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel> implements OnDestroy {
 	protected unsubscribe$: Subject<void> = new Subject<void>();
 	protected router: Router;
 	public pageTitle: string;
@@ -23,7 +23,7 @@ export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel>
 
 	constructor(
 		protected injector: Injector,
-		private resourceService: BaseResourceService<T>
+		protected resourceService: BaseResourceService<T>
 	) {
 		this.toasterService = injector.get(ToasterService);
 		this.router = this.injector.get(Router);
@@ -39,12 +39,6 @@ export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel>
 			);
 	}
 
-	ngOnInit() {
-		if (this.regiterId) {
-			this.getById();
-		}
-	}
-
 	ngOnDestroy() {
 		this.unsubscribe$.next();
 		this.unsubscribe$.complete();
@@ -57,24 +51,24 @@ export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel>
 			)
 			.subscribe(
 				_response => {
-					this.toasterService.success(_response['menssage'] || 'Item created with success.');
+					this.toasterService.success(_response['mensagem'] || 'Item created with success.');
 					this.resetForm();
 				},
 				_error => this.toasterService.error(_error['menssage'])
 			);
 	}
 
-	protected update(resource: T, uri: string = '') {
-		this.resourceService.update(resource, uri)
+	protected update(resource: T) {
+		this.resourceService.update(resource)
 			.pipe(
 				takeUntil(this.unsubscribe$)
 			)
 			.subscribe(
 				_response => {
-					this.toasterService.success(_response['menssage'] || 'Item updated with success.');
+					this.toasterService.success(_response['mensagem'] || 'Item updated with success.');
 					this.toBack();
 				},
-				_error => this.toasterService.error(_error['menssage'])
+				_error => this.toasterService.error(_error.error.message)
 			);
 	}
 
