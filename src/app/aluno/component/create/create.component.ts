@@ -1,12 +1,17 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { BaseResouceListComponent } from 'src/app/shared/components/base-resource-list.component';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+
+// models
 import { AlunoModel } from '../../models/aluno.model';
-import { BaseResourceRegisterComponent } from 'src/app/shared/components/base-resource-register.component';
+import { CursoModel } from 'src/app/curso/models/curso.model';
+
+// services
 import { AlunoService } from '../../services/aluno.service';
 import { ControlElementsService } from 'src/app/shared/services/control-elements.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CursoModel } from 'src/app/curso/models/curso.model';
-import { Observable } from 'rxjs';
+
+// components
+import { BaseResourceRegisterComponent } from 'src/app/shared/components/base-resource-register.component';
 
 @Component({
 	selector: 'app-create',
