@@ -31,7 +31,7 @@
             <div class="row form-group">
                 <div class="col-md-3">
                     <label>CPF *</label>
-                    <input type="text" class="inputs-form" required formControlName="cpf"
+                    <input type="text" class="inputs-form" required formControlName="cpf" maxlength="11"
                         [ngClass]="{'erro': cpf.invalid && (cpf.dirty || cpf.touched)}" />
 
                     <div class="texto-info erro" *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)">
@@ -41,7 +41,7 @@
 
                 <div class="col-md-3">
                     <label>Telefone *</label>
-                    <input type="text" class="inputs-form" required formControlName="phone"
+                    <input type="text" class="inputs-form" required formControlName="phone" maxlength="11"
                         [ngClass]="{'erro': phone.invalid && (phone.dirty || phone.touched)}" />
 
                     <div class="texto-info erro" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
@@ -55,9 +55,11 @@
                         [items]="cursosList | async"
                         [multiple]="true"
                         [closeOnSelect]="false"
-                        [searchable]="false"
+                        [searchable]="true"
+                        [ngModelOptions]="{standalone: true}"
                         bindLabel="nome"
                         placeholder="Selecione"
+                        [(ngModel)]="selectedCursos"
                         (add)="selectedCursosEvent($event)">
                     </ng-select>
                 </div>
