@@ -54,16 +54,16 @@ export abstract class BaseResourceService<T extends BaseResourceModel> extends B
 
 	public getGenericList(serviceUrl: string): Observable<any> {
 		return this.http
-			.get(`${this.url}/${this.apiPath}/${serviceUrl}`, super.httpJsonAuth())
+			.get(`${this.url}/${serviceUrl}`, super.httpJsonAuth())
 			.pipe(
 				map(this.extractData),
 				catchError(erro => throwError(erro.error.message))
 			);
 	}
 
-	public create(resource: T, uri: string): Observable<T> {
+	public create(resource: T): Observable<T> {
 		return this.http
-			.post(`${this.url}/${this.apiPath}/${uri}`, resource, super.httpJsonAuth())
+			.post(`${this.url}/${this.apiPath}`, resource, super.httpJsonAuth())
 			.pipe(
 				map(this.extractData),
 				catchError(this.mapsError)
