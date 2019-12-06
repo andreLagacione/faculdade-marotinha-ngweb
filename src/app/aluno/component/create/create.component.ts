@@ -16,8 +16,7 @@ import { takeUntil } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-create',
-	templateUrl: './create.component.html',
-	styleUrls: ['./create.component.scss']
+	templateUrl: './create.component.html'
 })
 export class CreateComponent extends BaseResourceRegisterComponent<AlunoModel> implements OnInit, OnDestroy {
 	public cursosList: Observable<CursoModel[]>;
@@ -95,7 +94,7 @@ export class CreateComponent extends BaseResourceRegisterComponent<AlunoModel> i
 	}
 
 	private patchaValuesForm(values: object) {
-		this.selectedCursos = values['cursoNomeListaDTOList'];
+		this.selectedCursos = values['cursos'];
 		this.registerForm.patchValue({
 			name: values['name'],
 			age: values['age'],
