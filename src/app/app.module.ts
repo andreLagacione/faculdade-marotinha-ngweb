@@ -6,6 +6,8 @@ import localePt from '@angular/common/locales/pt';
 
 // modules
 import { AlunoModule } from './aluno/aluno.module';
+import { CursoModule } from './curso/curso.module';
+import { MateriaModule } from './materia/materia.module';
 
 // routes
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +28,7 @@ registerLocaleData(localePt);
 	declarations: [
 		AppComponent,
 		SidebarComponent,
-		TopComponent
+		TopComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -34,6 +36,8 @@ registerLocaleData(localePt);
 		BrowserAnimationsModule,
 		HttpClientModule,
 		AlunoModule,
+		CursoModule,
+		MateriaModule
 	],
 	providers: [
 		Title,
