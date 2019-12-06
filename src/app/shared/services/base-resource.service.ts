@@ -70,9 +70,9 @@ export abstract class BaseResourceService<T extends BaseResourceModel> extends B
 			);
 	}
 
-	public update(resource: T, uri: string): Observable<T> {
+	public update(resource: T): Observable<T> {
 		return this.http
-			.put(`${this.url}/${this.apiPath}/${uri}`, resource, super.httpJsonAuth())
+			.put(`${this.url}/${this.apiPath}`, resource, super.httpJsonAuth())
 			.pipe(
 				map(this.extractData),
 				catchError(this.mapsError)
