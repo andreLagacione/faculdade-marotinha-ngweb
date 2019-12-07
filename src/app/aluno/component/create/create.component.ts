@@ -36,6 +36,14 @@ export class CreateComponent extends BaseResourceRegisterComponent<AlunoModel> i
 			.subscribe(
 				_response => this.patchaValuesForm(_response)
 			);
+
+		this.resourceService.clearVariables$
+			.pipe(
+				takeUntil(this.unsubscribe$)
+			)
+			.subscribe(
+				_response => this.selectedCursos = []
+			);
 	}
 
 	ngOnInit() {
