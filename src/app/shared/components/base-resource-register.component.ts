@@ -54,7 +54,7 @@ export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel>
 					this.toasterService.success(_response['mensagem'] || 'Item created with success.');
 					this.resetForm();
 				},
-				_error => this.toasterService.error(_error['menssage'])
+				_error => this.toasterService.error(_error.error.message)
 			);
 	}
 
@@ -85,6 +85,7 @@ export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel>
 
 	protected resetForm() {
 		this.registerForm.reset();
+		this.resourceService.clearVariables();
 	}
 
 	public toBack() {

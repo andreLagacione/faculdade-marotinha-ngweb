@@ -14,6 +14,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel> extends B
 	protected http: HttpClient;
 	public clearForm$: EventEmitter<boolean> = new EventEmitter();
 	public updateFormValues$: EventEmitter<object> = new EventEmitter();
+	public clearVariables$: EventEmitter<boolean> = new EventEmitter();
 
 	constructor(
 		protected apiPath: string,
@@ -120,5 +121,9 @@ export abstract class BaseResourceService<T extends BaseResourceModel> extends B
 
 	public updateFormValues(values: object) {
 		this.updateFormValues$.emit(values);
+	}
+
+	public clearVariables() {
+		this.clearVariables$.emit(true);
 	}
 }
