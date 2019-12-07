@@ -10,7 +10,7 @@
                     <div class="texto-info erro" *ngIf="name.invalid && (name.dirty || name.touched)">
                         <small *ngIf="name.errors.required">Campo obrigatório</small>
                         <small *ngIf="name.errors.minlength">O tamanho mínimo é de 3 caractéres</small>
-                        <small *ngIf="name.errors.maxlength">O tamanho máximo é de 3 caractéres</small>
+                        <small *ngIf="name.errors.maxlength">O tamanho máximo é de 50 caractéres</small>
                     </div>
                 </div>
 
