@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TopComponent } from './layout/top/top.component';
+import { ProfessorModule } from './professor/professor.module';
 
 registerLocaleData(localePt);
 
@@ -37,7 +38,8 @@ registerLocaleData(localePt);
 		HttpClientModule,
 		AlunoModule,
 		CursoModule,
-		MateriaModule
+		MateriaModule,
+		ProfessorModule
 	],
 	providers: [
 		Title,
