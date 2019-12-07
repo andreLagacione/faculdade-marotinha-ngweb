@@ -1,0 +1,50 @@
+<div class="card-component">
+    <form novalidate [formGroup]="registerForm" (ngSubmit)="save()">
+        <div class="content">
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label>Nome *</label>
+                    <input type="text" class="inputs-form" required formControlName="name"
+                        [ngClass]="{'erro': name.invalid && (name.dirty || name.touched)}" />
+
+                    <div class="texto-info erro" *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <small *ngIf="name.errors.required">Campo obrigatório</small>
+                        <small *ngIf="name.errors.minlength">O tamanho mínimo é de 3 caractéres</small>
+                        <small *ngIf="name.errors.maxlength">O tamanho máximo é de 100 caractéres</small>
+                    </div>
+                </div>
+            </div>
+            <!--/row-form-->
+
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label>Materias *</label>
+                    <ng-select
+                        [items]="materiasList | async"
+                        [multiple]="true"
+                        [closeOnSelect]="false"
+                        [searchable]="true"
+                        [ngModelOptions]="{standalone: true}"
+                        bindLabel="name"
+                        placeholder="Selecione"
+                        [(ngModel)]="selectedMaterias"
+                        (add)="selectedMateriasEvent($event)">
+                    </ng-select>
+                </div>
+            </div>
+            <!--/row-form-->
+        </div>
+        <!--/content-->
+
+        <footer class="bottom">
+            <div class="text-right">
+                <app-buttons [icon]="'fas fa-save'" [classes]="'primary auto'" [type]="'submit'" [text]="'Salvar'"
+                    [disabled]="!registerForm.valid || !registerForm.dirty"></app-buttons>
+                
+                <app-buttons class="ml-2" [icon]="'fas fa-reply'" [classes]="'auto'" [type]="'button'"
+                    [text]="'Voltar'" (eventClick)="toBack()"></app-buttons>
+            </div>
+        </footer>
+    </form>
+</div>
+<!--/card-component-->
