@@ -21,6 +21,10 @@ export class SidebarComponent {
 		name: 'Cursos',
 		icon: 'book-reader',
 		uri: '/cursos'
+	}, {
+		name: 'Professores',
+		icon: 'chalkboard-teacher',
+		uri: '/professores'
 	}];
 
 	constructor() { }
