@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './aluno/component/list/list.component';
 import { CreateComponent } from './aluno/component/create/create.component';
 import { CursoListComponent } from './curso/component/curso-list/curso-list.component';
+import { CursoCreateComponent } from './curso/component/curso-create/curso-create.component';
 
 const routes: Routes = [{
 		path: '',
@@ -22,6 +23,12 @@ const routes: Routes = [{
 	}, {
 		path: 'cursos',
 		component: CursoListComponent
+	}, {
+		path: 'cursos/cadastrar',
+		component: CursoCreateComponent
+	}, {
+		path: 'cursos/editar/:id',
+		component: CursoCreateComponent
 	},
 
 
