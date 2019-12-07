@@ -6,6 +6,7 @@ import { ListComponent } from './aluno/component/list/list.component';
 import { CreateComponent } from './aluno/component/create/create.component';
 import { CursoListComponent } from './curso/component/curso-list/curso-list.component';
 import { CursoCreateComponent } from './curso/component/curso-create/curso-create.component';
+import { ProfessorListComponent } from './professor/component/professor-list/professor-list.component';
 
 const routes: Routes = [{
 		path: '',
@@ -29,6 +30,9 @@ const routes: Routes = [{
 	}, {
 		path: 'cursos/editar/:id',
 		component: CursoCreateComponent
+	}, {
+		path: 'professores',
+		component: ProfessorListComponent
 	},
 
 
