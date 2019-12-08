@@ -25,8 +25,8 @@ export class ProfessorListComponent extends BaseResouceListComponent<ProfessorMo
 	}
 
 	ngOnInit() {
-		this.registerRoute = '/professor/cadastrar';
-		this.editRoute = '/professor/editar';
+		this.registerRoute = '/professores/cadastrar';
+		this.editRoute = '/professores/editar';
 		this.controlElementsService.pageName('Professores');
 		this.getAllPageable();
 	}
