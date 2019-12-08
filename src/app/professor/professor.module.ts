@@ -6,9 +6,10 @@ import { SharedModule } from '../shared/shared.module';
 
 // components
 import { ProfessorListComponent } from './component/professor-list/professor-list.component';
+import { ProfessorCreateComponent } from './component/professor-create/professor-create.component';
 
 @NgModule({
-	declarations: [ProfessorListComponent],
+	declarations: [ProfessorListComponent, ProfessorCreateComponent],
 	imports: [
 		CommonModule,
 		SharedModule
