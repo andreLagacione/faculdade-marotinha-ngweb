@@ -121,8 +121,8 @@ export class ProfessorCreateComponent extends BaseResourceRegisterComponent<Prof
 	}
 
 	private patchaValuesForm(values: object) {
-		this.selectedCursos = values['listaCursos'];
-		this.selectedMaterias = values['listaMaterias'];
+		this.selectedCursos = values['cursos'];
+		this.selectedMaterias = values['materias'];
 		this.registerForm.patchValue({
 			name: values['name'],
 			age: values['age'],
