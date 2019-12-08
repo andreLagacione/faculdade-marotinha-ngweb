@@ -1,13 +1,19 @@
 import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
-import { ProfessorModel } from '../../models/professor.model';
-import { BaseResourceRegisterComponent } from 'src/app/shared/components/base-resource-register.component';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+// models
+import { ProfessorModel } from '../../models/professor.model';
 import { CursoModel } from 'src/app/curso/models/curso.model';
 import { MateriaModel } from 'src/app/materia/models/materia.model';
+
+// component
+import { BaseResourceRegisterComponent } from 'src/app/shared/components/base-resource-register.component';
+
+// service
 import { ProfessorService } from '../../services/professor.service';
 import { ControlElementsService } from 'src/app/shared/services/control-elements.service';
-import { takeUntil } from 'rxjs/operators';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-professor-create',
