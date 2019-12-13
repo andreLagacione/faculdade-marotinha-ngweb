@@ -26,6 +26,10 @@ export class ProfessorCreateComponent extends BaseResourceRegisterComponent<Prof
 	public materiasList: Observable<MateriaModel[]>;
 	public selectedMaterias: MateriaModel[] = [];
 
+	/**
+	 * validar antes de enviar pro back
+	 */
+
 	constructor(
 		protected injector: Injector,
 		protected professorService: ProfessorService,
