@@ -8,6 +8,8 @@ import { CursoListComponent } from './curso/component/curso-list/curso-list.comp
 import { CursoCreateComponent } from './curso/component/curso-create/curso-create.component';
 import { ProfessorListComponent } from './professor/component/professor-list/professor-list.component';
 import { ProfessorCreateComponent } from './professor/component/professor-create/professor-create.component';
+import { MateriaListComponent } from './materia/component/materia-list/materia-list.component';
+import { MateriaCreateComponent } from './materia/component/materia-create/materia-create.component';
 
 const routes: Routes = [{
 		path: '',
@@ -40,6 +42,15 @@ const routes: Routes = [{
 	}, {
 		path: 'professores/editar/:id',
 		component: ProfessorCreateComponent
+	}, {
+		path: 'materias',
+		component: MateriaListComponent
+	}, {
+		path: 'materias/cadastrar',
+		component: MateriaCreateComponent
+	}, {
+		path: 'materias/editar/:id',
+		component: MateriaCreateComponent
 	},
 
 
