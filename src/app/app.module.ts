@@ -8,6 +8,7 @@ import localePt from '@angular/common/locales/pt';
 import { AlunoModule } from './aluno/aluno.module';
 import { CursoModule } from './curso/curso.module';
 import { MateriaModule } from './materia/materia.module';
+import { ProfessorModule } from './professor/professor.module';
 
 // routes
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +22,6 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TopComponent } from './layout/top/top.component';
-import { ProfessorModule } from './professor/professor.module';
 
 registerLocaleData(localePt);
 

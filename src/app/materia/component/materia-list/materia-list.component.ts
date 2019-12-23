@@ -1,6 +1,12 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { BaseResouceListComponent } from 'src/app/shared/components/base-resource-list.component';
+
+// model
 import { MateriaModel } from '../../models/materia.model';
+
+// component
+import { BaseResouceListComponent } from 'src/app/shared/components/base-resource-list.component';
+
+// services
 import { MateriaService } from '../../services/materia.service';
 import { ControlElementsService } from 'src/app/shared/services/control-elements.service';
 
@@ -19,8 +25,8 @@ export class MateriaListComponent extends BaseResouceListComponent<MateriaModel>
 	}
 
 	ngOnInit() {
-		this.registerRoute = '/materia/cadastrar';
-		this.editRoute = '/materia/editar';
+		this.registerRoute = '/materias/cadastrar';
+		this.editRoute = '/materias/editar';
 		this.controlElementsService.pageName('Materias');
 		this.getAllPageable();
 	}

@@ -1,12 +1,18 @@
 import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
-import { CursoModel } from '../../models/curso.model';
-import { BaseResourceRegisterComponent } from 'src/app/shared/components/base-resource-register.component';
-import { CursoService } from '../../services/curso.service';
-import { ControlElementsService } from 'src/app/shared/services/control-elements.service';
-import { takeUntil } from 'rxjs/operators';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+// models
+import { CursoModel } from '../../models/curso.model';
 import { MateriaModel } from 'src/app/materia/models/materia.model';
+
+// component
+import { BaseResourceRegisterComponent } from 'src/app/shared/components/base-resource-register.component';
+
+// service
+import { CursoService } from '../../services/curso.service';
+import { ControlElementsService } from 'src/app/shared/services/control-elements.service';
 
 @Component({
 	selector: 'app-curso-create',
