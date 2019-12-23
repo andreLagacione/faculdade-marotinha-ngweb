@@ -22,6 +22,10 @@ export class SidebarComponent {
 		icon: 'book-reader',
 		uri: '/cursos'
 	}, {
+		name: 'materias',
+		icon: 'book',
+		uri: '/materias'
+	}, {
 		name: 'Professores',
 		icon: 'chalkboard-teacher',
 		uri: '/professores'
