@@ -9,7 +9,10 @@ import { ProfessorListComponent } from './component/professor-list/professor-lis
 import { ProfessorCreateComponent } from './component/professor-create/professor-create.component';
 
 @NgModule({
-	declarations: [ProfessorListComponent, ProfessorCreateComponent],
+	declarations: [
+		ProfessorListComponent,
+		ProfessorCreateComponent
+	],
 	imports: [
 		CommonModule,
 		SharedModule
