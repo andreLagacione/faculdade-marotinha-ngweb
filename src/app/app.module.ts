@@ -9,6 +9,7 @@ import { AlunoModule } from './aluno/aluno.module';
 import { CursoModule } from './curso/curso.module';
 import { MateriaModule } from './materia/materia.module';
 import { ProfessorModule } from './professor/professor.module';
+import { TurmaModule } from './turma/turma.module';
 
 // routes
 import { AppRoutingModule } from './app-routing.module';
@@ -39,7 +40,8 @@ registerLocaleData(localePt);
 		AlunoModule,
 		CursoModule,
 		MateriaModule,
-		ProfessorModule
+		ProfessorModule,
+		TurmaModule
 	],
 	providers: [
 		Title,
