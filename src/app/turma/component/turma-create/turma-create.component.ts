@@ -25,7 +25,7 @@ export class TurmaCreateComponent extends BaseResourceRegisterComponent<TurmaMod
 	public cursosList: Observable<CursoModel[]>;
 	public professorList: Observable<ProfessorModel[]>;
 	public alunoList: Observable<AlunoModel[]>;
-	public selectedAlunos: string[] = [];
+	public selectedAlunos: AlunoModel[] = [];
 	public periodoList = ['manhã', 'tarde', 'noite'];
 
 	constructor(
@@ -74,10 +74,9 @@ export class TurmaCreateComponent extends BaseResourceRegisterComponent<TurmaMod
 
 	private buildAnoLista() {
 		const anoAtual = new Date().getFullYear();
-		const anoAtualMenosCinco = anoAtual - 5;
-		const anoAtualMaisCinco = anoAtual + 5;
+		const anoAtualMaisDez = anoAtual + 10;
 
-		for (let i = anoAtualMenosCinco; i <= anoAtualMaisCinco; i++) {
+		for (let i = 2019; i <= anoAtualMaisDez; i++) {
 			this.anoLista.push(i);
 		}
 	}
@@ -93,22 +92,18 @@ export class TurmaCreateComponent extends BaseResourceRegisterComponent<TurmaMod
 
 	private getCursos() {
 		this.cursosList = this.turmaService.getGenericList('curso/combo-list');
-		console.log('getCursos');
 	}
 
 	private getProfessores() {
 		this.professorList = this.turmaService.getGenericList('professor/combo-list');
-		console.log('getProfessores');
 	}
 
 	private getAlunos() {
 		this.alunoList = this.turmaService.getGenericList('aluno/combo-list');
-		console.log('getAlunos');
 	}
 
-	public selectedItemEvent(aluno: any) {
-		console.log(aluno.id);
-		this.selectedAlunos.push(aluno.id);
+	public selectedItemEvent(aluno: AlunoModel) {
+		this.selectedAlunos.push(aluno);
 	}
 
 	public save() {
@@ -118,7 +113,7 @@ export class TurmaCreateComponent extends BaseResourceRegisterComponent<TurmaMod
 			ano: values.ano,
 			curso: values.curso,
 			professor: values.professor,
-			alunos: this.selectedAlunos,
+			alunos: this.selectedAlunos.map(value => value.id),
 			periodo: values.periodo,
 		};
 

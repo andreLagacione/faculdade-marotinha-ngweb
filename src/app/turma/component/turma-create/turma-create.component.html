@@ -61,6 +61,8 @@
                         [closeOnSelect]="false"
                         [searchable]="true"
                         [ngModelOptions]="{standalone: true}"
+                        [hideSelected]="true"
+                        [(ngModel)]="selectedAlunos"
                         bindLabel="name"
                         placeholder="Selecione"
                         (add)="selectedItemEvent($event)">
