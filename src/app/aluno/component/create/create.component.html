@@ -50,17 +50,16 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label>Cursos *</label>
+                    <label>Turmas *</label>
                     <ng-select
-                        [items]="cursosList | async"
+                        [items]="turmasList | async"
                         [multiple]="true"
                         [closeOnSelect]="false"
                         [searchable]="true"
                         [ngModelOptions]="{standalone: true}"
-                        bindLabel="nome"
+                        bindLabel="name"
                         placeholder="Selecione"
-                        [(ngModel)]="selectedCursos"
-                        (add)="selectedCursosEvent($event)">
+                        [(ngModel)]="turmasSelected">
                     </ng-select>
                 </div>
             </div>

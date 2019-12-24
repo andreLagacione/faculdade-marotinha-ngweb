@@ -13,14 +13,15 @@ import { ControlElementsService } from 'src/app/shared/services/control-elements
 // components
 import { BaseResourceRegisterComponent } from 'src/app/shared/components/base-resource-register.component';
 import { takeUntil } from 'rxjs/operators';
+import { TurmaModel } from 'src/app/turma/models/turma.model';
 
 @Component({
 	selector: 'app-create',
 	templateUrl: './create.component.html'
 })
 export class CreateComponent extends BaseResourceRegisterComponent<AlunoModel> implements OnInit, OnDestroy {
-	public cursosList: Observable<CursoModel[]>;
-	public selectedCursos: CursoModel[] = [];
+	public turmasList: Observable<TurmaModel[]>;
+	public turmasSelected: TurmaModel[] = [];
 
 	constructor(
 		protected injector: Injector,
@@ -42,13 +43,13 @@ export class CreateComponent extends BaseResourceRegisterComponent<AlunoModel> i
 				takeUntil(this.unsubscribe$)
 			)
 			.subscribe(
-				_response => this.selectedCursos = []
+				_response => this.turmasSelected = []
 			);
 	}
 
 	ngOnInit() {
 		this.instaciateForm();
-		this.getCursos();
+		this.getTurmas();
 		this.controlElementsService.pageName('Cadastrar aluno');
 		this.backRoute = '/alunos';
 
@@ -72,13 +73,13 @@ export class CreateComponent extends BaseResourceRegisterComponent<AlunoModel> i
 		});
 	}
 
-	private getCursos() {
-		this.cursosList = this.alunoService.getGenericList('curso/lista');
+	private getTurmas() {
+		this.turmasList = this.alunoService.getGenericList('turma/combo-list');
 	}
 
-	public selectedCursosEvent(curso: CursoModel) {
-		this.selectedCursos.push({
-			id: curso.id
+	public selectedItemEvent(turma: TurmaModel) {
+		this.turmasSelected.push({
+			id: turma.id
 		});
 	}
 
@@ -90,7 +91,7 @@ export class CreateComponent extends BaseResourceRegisterComponent<AlunoModel> i
 			age: values.age,
 			cpf: values.cpf,
 			phone: values.phone,
-			cursos: this.selectedCursos
+			turmas: this.turmasSelected.map(value => value.id)
 		};
 
 		if (this.regiterId) {
@@ -102,7 +103,7 @@ export class CreateComponent extends BaseResourceRegisterComponent<AlunoModel> i
 	}
 
 	private patchaValuesForm(values: object) {
-		this.selectedCursos = values['cursos'];
+		this.turmasSelected = values['turmas'];
 		this.registerForm.patchValue({
 			name: values['name'],
 			age: values['age'],
