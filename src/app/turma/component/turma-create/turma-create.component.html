@@ -14,7 +14,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-10">
                     <label>Curso *</label>
                     <select class="inputs-form select" required formControlName="curso" [ngClass]="{'erro': curso.invalid && (curso.dirty || curso.touched)}">
                         <option value="">Selecione</option>
@@ -25,8 +25,11 @@
                         <small *ngIf="curso.errors.required">Campo obrigatório</small>
                     </div>
                 </div>
+            </div>
+            <!--/row-form-->
 
-                <div class="col-md-3">
+            <div class="row form-group">
+                <div class="col-md-10">
                     <label>Professor *</label>
                     <select class="inputs-form select" required formControlName="professor" [ngClass]="{'erro': professor.invalid && (professor.dirty || professor.touched)}">
                         <option value="">Selecione</option>
@@ -38,7 +41,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label>Período *</label>
                     <select class="inputs-form select" required formControlName="periodo" [ngClass]="{'erro': periodo.invalid && (periodo.dirty || periodo.touched)}">
                         <option value="">Selecione</option>
@@ -51,25 +54,6 @@
                 </div>
             </div>
             <!--/row-form-->
-
-            <div class="row form-group">
-                <div class="col-md-12">
-                    <label>Alunos *</label>
-                    <ng-select
-                        [items]="alunoList | async"
-                        [multiple]="true"
-                        [closeOnSelect]="false"
-                        [searchable]="true"
-                        [ngModelOptions]="{standalone: true}"
-                        [hideSelected]="true"
-                        [(ngModel)]="selectedAlunos"
-                        bindLabel="name"
-                        placeholder="Selecione"
-                        (add)="selectedItemEvent($event)">
-                    </ng-select>
-                </div>
-            </div>
-            <!--/row-form -->
         </div>
         <!--/content-->
 

@@ -7,7 +7,6 @@ export class TurmaModel extends BaseResourceModel {
 	professor?: string;
 	totalAlunos?: number;
 	periodo?: string;
-	alunos?: (string | number)[];
 
 	constructor() {
 		super();

@@ -24,8 +24,6 @@ export class TurmaCreateComponent extends BaseResourceRegisterComponent<TurmaMod
 	public anoLista: number[] = [];
 	public cursosList: Observable<CursoModel[]>;
 	public professorList: Observable<ProfessorModel[]>;
-	public alunoList: Observable<AlunoModel[]>;
-	public selectedAlunos: AlunoModel[] = [];
 	public periodoList = ['manhã', 'tarde', 'noite'];
 
 	constructor(
@@ -42,14 +40,6 @@ export class TurmaCreateComponent extends BaseResourceRegisterComponent<TurmaMod
 			.subscribe(
 				_response => this.patchaValuesForm(_response)
 			);
-
-		this.resourceService.clearVariables$
-			.pipe(
-				takeUntil(this.unsubscribe$)
-			)
-			.subscribe(
-				_response => this.selectedAlunos = []
-			);
 	}
 
 	ngOnInit() {
@@ -57,7 +47,6 @@ export class TurmaCreateComponent extends BaseResourceRegisterComponent<TurmaMod
 		this.instaciateForm();
 		this.getCursos();
 		this.getProfessores();
-		this.getAlunos();
 		this.controlElementsService.pageName('Cadastrar turma');
 		this.backRoute = '/turmas';
 
@@ -98,14 +87,6 @@ export class TurmaCreateComponent extends BaseResourceRegisterComponent<TurmaMod
 		this.professorList = this.turmaService.getGenericList('professor/combo-list');
 	}
 
-	private getAlunos() {
-		this.alunoList = this.turmaService.getGenericList('aluno/combo-list');
-	}
-
-	public selectedItemEvent(aluno: AlunoModel) {
-		this.selectedAlunos.push(aluno);
-	}
-
 	public save() {
 		const values = this.registerForm.value;
 		const turma: TurmaModel = {
@@ -113,7 +94,6 @@ export class TurmaCreateComponent extends BaseResourceRegisterComponent<TurmaMod
 			ano: values.ano,
 			curso: values.curso,
 			professor: values.professor,
-			alunos: this.selectedAlunos.map(value => value.id),
 			periodo: values.periodo,
 		};
 
@@ -126,12 +106,10 @@ export class TurmaCreateComponent extends BaseResourceRegisterComponent<TurmaMod
 	}
 
 	private patchaValuesForm(values: object) {
-		this.selectedAlunos = values['alunos'];
 		this.registerForm.patchValue({
 			ano: values['ano'],
 			curso: values['curso'].id,
 			professor: values['professor'].id,
-			alunos: this.selectedAlunos,
 			periodo: values['periodo'],
 		});
 
