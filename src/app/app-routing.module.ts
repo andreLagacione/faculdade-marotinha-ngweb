@@ -10,6 +10,8 @@ import { ProfessorListComponent } from './professor/component/professor-list/pro
 import { ProfessorCreateComponent } from './professor/component/professor-create/professor-create.component';
 import { MateriaListComponent } from './materia/component/materia-list/materia-list.component';
 import { MateriaCreateComponent } from './materia/component/materia-create/materia-create.component';
+import { TurmaListComponent } from './turma/component/turma-list/turma-list.component';
+import { TurmaCreateComponent } from './turma/component/turma-create/turma-create.component';
 
 const routes: Routes = [{
 		path: '',
@@ -51,6 +53,15 @@ const routes: Routes = [{
 	}, {
 		path: 'materias/editar/:id',
 		component: MateriaCreateComponent
+	}, {
+		path: 'turmas',
+		component: TurmaListComponent
+	}, {
+		path: 'turmas/cadastrar',
+		component: TurmaCreateComponent
+	}, {
+		path: 'turmas/editar/:id',
+		component: TurmaCreateComponent
 	},
 
 
