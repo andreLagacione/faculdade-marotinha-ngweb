@@ -1,0 +1,85 @@
+<div class="card-component">
+    <form novalidate [formGroup]="registerForm" (ngSubmit)="save()">
+        <div class="content">
+            <div class="row form-group">
+                <div class="col-md-2">
+                    <label>Ano *</label>
+                    <select class="inputs-form select" required formControlName="ano" [ngClass]="{'erro': ano.invalid && (ano.dirty || ano.touched)}">
+                        <option value="">Selecione</option>
+                        <option value="{{ ano }}" *ngFor="let ano of anoLista">{{ ano }}</option>
+                    </select>
+
+                    <div class="texto-info erro" *ngIf="ano.invalid && (ano.dirty || ano.touched)">
+                        <small *ngIf="ano.errors.required">Campo obrigatório</small>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label>Curso *</label>
+                    <select class="inputs-form select" required formControlName="curso" [ngClass]="{'erro': curso.invalid && (curso.dirty || curso.touched)}">
+                        <option value="">Selecione</option>
+                        <option value="{{ curso.id }}" *ngFor="let curso of cursosList | async">{{ curso.nome }}</option>
+                    </select>
+
+                    <div class="texto-info erro" *ngIf="curso.invalid && (curso.dirty || curso.touched)">
+                        <small *ngIf="curso.errors.required">Campo obrigatório</small>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Professor *</label>
+                    <select class="inputs-form select" required formControlName="professor" [ngClass]="{'erro': professor.invalid && (professor.dirty || professor.touched)}">
+                        <option value="">Selecione</option>
+                        <option value="{{ professor.id }}" *ngFor="let professor of professorList | async">{{ professor.name }}</option>
+                    </select>
+
+                    <div class="texto-info erro" *ngIf="professor.invalid && (professor.dirty || professor.touched)">
+                        <small *ngIf="professor.errors.required">Campo obrigatório</small>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Período *</label>
+                    <select class="inputs-form select" required formControlName="periodo" [ngClass]="{'erro': periodo.invalid && (periodo.dirty || periodo.touched)}">
+                        <option value="">Selecione</option>
+                        <option value="{{ periodo }}" *ngFor="let periodo of periodoList">{{ periodo | titlecase }}</option>
+                    </select>
+
+                    <div class="texto-info erro" *ngIf="periodo.invalid && (periodo.dirty || periodo.touched)">
+                        <small *ngIf="periodo.errors.required">Campo obrigatório</small>
+                    </div>
+                </div>
+            </div>
+            <!--/row-form-->
+
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label>Alunos *</label>
+                    <ng-select
+                        [items]="alunoList | async"
+                        [multiple]="true"
+                        [closeOnSelect]="false"
+                        [searchable]="true"
+                        [ngModelOptions]="{standalone: true}"
+                        bindLabel="name"
+                        placeholder="Selecione"
+                        (add)="selectedItemEvent($event)">
+                    </ng-select>
+                </div>
+            </div>
+            <!--/row-form -->
+        </div>
+        <!--/content-->
+
+        <footer class="bottom">
+            <div class="text-right">
+                <app-buttons [icon]="'fas fa-save'" [classes]="'primary auto'" [type]="'submit'" [text]="'Salvar'"
+                    [disabled]="!registerForm.valid || !registerForm.dirty"></app-buttons>
+                
+                <app-buttons class="ml-2" [icon]="'fas fa-reply'" [classes]="'auto'" [type]="'button'"
+                    [text]="'Voltar'" (eventClick)="toBack()"></app-buttons>
+            </div>
+        </footer>
+    </form>
+</div>
+<!--/card-component-->
