@@ -75,7 +75,7 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 			)
 			.subscribe(
 				_response => this.resourceList = _response,
-				_error => this.toasterService.error(_error['message'])
+				_error => this.toasterService.error(_error.error.message)
 			);
 	}
 
@@ -99,7 +99,7 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 						this.messageNoData = 'Not found informations to show!';
 					}
 				},
-				_error => this.toasterService.error(_error['message'])
+				_error => this.toasterService.error(_error.error.message)
 			);
 	}
 
@@ -114,7 +114,7 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 					this.toasterService.success(_response['message'] || 'Item removed with success.');
 					this.getAllPageable();
 				},
-				_error => this.toasterService.error(_error['message'])
+				_error => this.toasterService.error(_error.error.message)
 			);
 	}
 
