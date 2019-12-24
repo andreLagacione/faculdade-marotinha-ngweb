@@ -29,6 +29,10 @@ export class SidebarComponent {
 		name: 'Professores',
 		icon: 'chalkboard-teacher',
 		uri: '/professores'
+	}, {
+		name: 'Turmas',
+		icon: 'users',
+		uri: '/turmas'
 	}];
 
 	constructor() { }
