@@ -30,7 +30,7 @@
                     (eventClick)="editar(turma.id)"></app-buttons>
                 
                 <app-buttons class="ml-2" [icon]="'fas fa-trash-alt'" [classes]="'auto for-table danger'" [type]="'button'"
-                    (eventClick)="openConfirmModal(turma.id, turma.name)"></app-buttons>
+                    (eventClick)="openConfirmModal(turma.id, 'class for course ' + turma.curso + ' in year of ' + turma.ano)"></app-buttons>
             </td>
         </tr>
     </tbody>
