@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 // module
 import { SharedModule } from '../shared/shared.module';
+import { NotaModule } from '../nota/nota.module';
 
 // components
 import { BoletimCreateComponent } from './component/boletim-create/boletim-create.component';
@@ -10,12 +11,13 @@ import { BoletimListComponent } from './component/boletim-list/boletim-list.comp
 
 @NgModule({
   declarations: [
-	BoletimCreateComponent,
-	BoletimListComponent
+	  BoletimCreateComponent,
+	  BoletimListComponent
   ],
   imports: [
-	CommonModule,
-	SharedModule
+	  CommonModule,
+	  SharedModule,
+	  NotaModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

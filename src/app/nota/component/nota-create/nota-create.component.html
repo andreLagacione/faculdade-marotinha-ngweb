@@ -1,0 +1,42 @@
+<div id="notas-control">
+    <h4 class="title">Notas</h4>
+
+    <table class="default w-100 mt-3">
+        <thead>
+            <tr>
+                <th>1° Bimestre</th>
+                <th>2° Bimestre</th>
+                <th>3° Bimestre</th>
+                <th>4° Bimestre</th>
+                <th>Matéria</th>
+                <th class="col-acoes">Ações</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <!--  *ngFor="let curso of resourceList" -->
+            <tr>
+                <td>7</td>
+                <td>7</td>
+                <td>7</td>
+                <td>7</td>
+                <td>Banco de dados</td>
+                <td class="col-acoes">
+                    <app-buttons [icon]="'fas fa-edit'" [classes]="'auto for-table'" [type]="'button'"
+                        (eventClick)="editar(curso.id)"></app-buttons>
+                    
+                    <app-buttons class="ml-2" [icon]="'fas fa-trash-alt'" [classes]="'auto for-table danger'" [type]="'button'"
+                        (eventClick)="openConfirmModal(curso.id, curso.nome)"></app-buttons>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--/notas-control-->
+
+
+
+
+
+
+<app-confirm-modal></app-confirm-modal>
