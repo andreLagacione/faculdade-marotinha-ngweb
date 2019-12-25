@@ -22,6 +22,10 @@ export class SidebarComponent {
 		icon: 'book-reader',
 		uri: '/cursos'
 	}, {
+		name: 'Boletins',
+		icon: 'clipboard',
+		uri: '/boletins'
+	}, {
 		name: 'materias',
 		icon: 'book',
 		uri: '/materias'
