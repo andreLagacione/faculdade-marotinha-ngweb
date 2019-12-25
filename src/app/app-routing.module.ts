@@ -12,6 +12,8 @@ import { MateriaListComponent } from './materia/component/materia-list/materia-l
 import { MateriaCreateComponent } from './materia/component/materia-create/materia-create.component';
 import { TurmaListComponent } from './turma/component/turma-list/turma-list.component';
 import { TurmaCreateComponent } from './turma/component/turma-create/turma-create.component';
+import { BoletimListComponent } from './boletim/component/boletim-list/boletim-list.component';
+import { BoletimCreateComponent } from './boletim/component/boletim-create/boletim-create.component';
 
 const routes: Routes = [{
 		path: '',
@@ -62,6 +64,15 @@ const routes: Routes = [{
 	}, {
 		path: 'turmas/editar/:id',
 		component: TurmaCreateComponent
+	}, {
+		path: 'boletins',
+		component: BoletimListComponent
+	}, {
+		path: 'boletins/cadastrar',
+		component: BoletimCreateComponent
+	}, {
+		path: 'boletins/editar/:id',
+		component: BoletimCreateComponent
 	},
 
 
