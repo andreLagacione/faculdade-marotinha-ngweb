@@ -10,6 +10,7 @@ import { CursoModule } from './curso/curso.module';
 import { MateriaModule } from './materia/materia.module';
 import { ProfessorModule } from './professor/professor.module';
 import { TurmaModule } from './turma/turma.module';
+import { BoletimModule } from './boletim/boletim.module';
 
 // routes
 import { AppRoutingModule } from './app-routing.module';
@@ -41,7 +42,8 @@ registerLocaleData(localePt);
 		CursoModule,
 		MateriaModule,
 		ProfessorModule,
-		TurmaModule
+		TurmaModule,
+		BoletimModule
 	],
 	providers: [
 		Title,
