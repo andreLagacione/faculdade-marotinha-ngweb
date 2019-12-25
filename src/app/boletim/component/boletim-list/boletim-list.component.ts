@@ -1,6 +1,12 @@
 import { Component, OnInit, Injector } from '@angular/core';
+
+// component
 import { BaseResouceListComponent } from 'src/app/shared/components/base-resource-list.component';
+
+// model
 import { BoletimModel } from '../../models/boletim.model';
+
+// service
 import { BoletimService } from '../../services/boletim.service';
 import { ControlElementsService } from 'src/app/shared/services/control-elements.service';
 
@@ -19,8 +25,8 @@ export class BoletimListComponent extends BaseResouceListComponent<BoletimModel>
 	}
 
 	ngOnInit() {
-		this.registerRoute = '/boletim/cadastrar';
-		this.editRoute = '/boletim/editar';
+		this.registerRoute = '/boletins/cadastrar';
+		this.editRoute = '/boletins/editar';
 		this.controlElementsService.pageName('Boletins');
 		this.getAllPageable();
 	}
