@@ -5,8 +5,8 @@ import { takeUntil } from 'rxjs/operators';
 
 // models
 import { ProfessorModel } from '../../models/professor.model';
-import { CursoModel } from 'src/app/curso/models/curso.model';
 import { MateriaModel } from 'src/app/materia/models/materia.model';
+import { TurmaModel } from 'src/app/turma/models/turma.model';
 
 // component
 import { BaseResourceRegisterComponent } from 'src/app/shared/components/base-resource-register.component';
@@ -21,10 +21,8 @@ import { ControlElementsService } from 'src/app/shared/services/control-elements
 })
 export class ProfessorCreateComponent extends BaseResourceRegisterComponent<ProfessorModel> implements OnInit, OnDestroy {
 
-	public cursosList: Observable<CursoModel[]>;
-	public selectedCursos: CursoModel[] = [];
 	public materiasList: Observable<MateriaModel[]>;
-	public selectedMaterias: MateriaModel[] = [];
+	public materiasSelected: MateriaModel[] = [];
 
 	constructor(
 		protected injector: Injector,
@@ -47,15 +45,13 @@ export class ProfessorCreateComponent extends BaseResourceRegisterComponent<Prof
 			)
 			.subscribe(
 				_response => {
-					this.selectedCursos = [];
-					this.selectedMaterias = [];
+					this.materiasSelected = [];
 				}
 			);
 	}
 
 	ngOnInit() {
 		this.instaciateForm();
-		this.getCursos();
 		this.getMaterias();
 		this.controlElementsService.pageName('Cadastrar professor');
 		this.backRoute = '/professores';
@@ -80,24 +76,8 @@ export class ProfessorCreateComponent extends BaseResourceRegisterComponent<Prof
 		});
 	}
 
-	private getCursos() {
-		this.cursosList = this.professorService.getGenericList('curso/lista');
-	}
-
 	private getMaterias() {
-		this.materiasList = this.professorService.getGenericList('materia/lista');
-	}
-
-	public selectedCursosEvent(curso: CursoModel) {
-		this.selectedCursos.push({
-			id: curso.id
-		});
-	}
-
-	public selectedMateriasEvent(materia: MateriaModel) {
-		this.selectedMaterias.push({
-			id: materia.id
-		});
+		this.materiasList = this.professorService.getGenericList('materia/combo-list');
 	}
 
 	public save() {
@@ -108,8 +88,7 @@ export class ProfessorCreateComponent extends BaseResourceRegisterComponent<Prof
 			age: values.age,
 			cpf: values.cpf,
 			phone: values.phone,
-			materiasLecionadas: this.selectedMaterias,
-			cursosLecionados: this.selectedCursos
+			materias: this.materiasSelected.map(value => value.id)
 		};
 
 		if (this.regiterId) {
@@ -121,8 +100,7 @@ export class ProfessorCreateComponent extends BaseResourceRegisterComponent<Prof
 	}
 
 	private patchaValuesForm(values: object) {
-		this.selectedCursos = values['cursos'];
-		this.selectedMaterias = values['materias'];
+		this.materiasSelected = values['materias'];
 		this.registerForm.patchValue({
 			name: values['name'],
 			age: values['age'],

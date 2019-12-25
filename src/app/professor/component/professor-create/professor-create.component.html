@@ -52,22 +52,7 @@
             <!--/row-form-->
 
             <div class="row form-group">
-                <div class="col-md-6">
-                    <label>Cursos lecionados *</label>
-                    <ng-select
-                        [items]="cursosList | async"
-                        [multiple]="true"
-                        [closeOnSelect]="false"
-                        [searchable]="true"
-                        [ngModelOptions]="{standalone: true}"
-                        bindLabel="nome"
-                        placeholder="Selecione"
-                        [(ngModel)]="selectedCursos"
-                        (add)="selectedCursosEvent($event)">
-                    </ng-select>
-                </div>
-
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <label>Materias lecionadas *</label>
                     <ng-select
                         [items]="materiasList | async"
@@ -77,8 +62,7 @@
                         [ngModelOptions]="{standalone: true}"
                         bindLabel="name"
                         placeholder="Selecione"
-                        [(ngModel)]="selectedMaterias"
-                        (add)="selectedMateriasEvent($event)">
+                        [(ngModel)]="materiasSelected">
                     </ng-select>
                 </div>
             </div>
