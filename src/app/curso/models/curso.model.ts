@@ -1,11 +1,9 @@
-import { BaseResourceModel } from 'src/app/shared/models/base-resource.model';
-
 // models
-import { MateriaModel } from 'src/app/materia/models/materia.model';
+import { BaseResourceModel } from 'src/app/shared/models/base-resource.model';
 
 export class CursoModel extends BaseResourceModel {
 	name?: string;
-	materias?: MateriaModel[];
+	materias?: (string | number)[];
 
 	constructor() {
 		super();

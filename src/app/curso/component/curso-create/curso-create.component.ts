@@ -70,7 +70,7 @@ export class CursoCreateComponent extends BaseResourceRegisterComponent<CursoMod
 	}
 
 	private getMaterias() {
-		this.materiasList = this.cursoService.getGenericList('materia/lista');
+		this.materiasList = this.cursoService.getGenericList('materia/combo-list');
 	}
 
 	public selectedMateriasEvent(materia: MateriaModel) {
@@ -84,7 +84,7 @@ export class CursoCreateComponent extends BaseResourceRegisterComponent<CursoMod
 		const curso: CursoModel = {
 			id: this.regiterId,
 			name: values.name,
-			materias: this.selectedMaterias
+			materias: this.selectedMaterias.map(value => value.id)
 		};
 
 		if (this.regiterId) {
