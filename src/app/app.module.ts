@@ -3,6 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import localePt from '@angular/common/locales/pt';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // modules
 import { AlunoModule } from './aluno/aluno.module';
@@ -11,6 +12,7 @@ import { MateriaModule } from './materia/materia.module';
 import { ProfessorModule } from './professor/professor.module';
 import { TurmaModule } from './turma/turma.module';
 import { BoletimModule } from './boletim/boletim.module';
+import { NotaModule } from './nota/nota.module';
 
 // routes
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +24,6 @@ import { ErrorInterceptor } from './shared/services/http-request-interceptor';
 // components
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TopComponent } from './layout/top/top.component';
 
 registerLocaleData(localePt);
@@ -43,7 +44,8 @@ registerLocaleData(localePt);
 		MateriaModule,
 		ProfessorModule,
 		TurmaModule,
-		BoletimModule
+		BoletimModule,
+		NotaModule
 	],
 	providers: [
 		Title,
