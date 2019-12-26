@@ -15,10 +15,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './boletim-create.component.html'
 })
 export class BoletimCreateComponent extends BaseResourceRegisterComponent<BoletimModel> implements OnInit, OnDestroy {
-  public professorList: Observable<ProfessorModel[]>;
+  	public professorList: Observable<ProfessorModel[]>;
 	public alunoList: Observable<AlunoModel[]>;
-  public turmaList: Observable<TurmaModel[]>;
-  public anoList: number[] = [];
+	public turmaList: Observable<TurmaModel[]>;
+	public anoList: number[] = [];
 
 	constructor(
 		protected injector: Injector,
