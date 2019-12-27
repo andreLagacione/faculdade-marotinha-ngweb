@@ -9,6 +9,7 @@ import { BoletimModel } from '../../models/boletim.model';
 // service
 import { BoletimService } from '../../services/boletim.service';
 import { ControlElementsService } from 'src/app/shared/services/control-elements.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-boletim-list',
@@ -34,6 +35,10 @@ export class BoletimListComponent extends BaseResouceListComponent<BoletimModel>
 	protected getAllPageable() {
 		this.baseParamsPage = `?sort=aluno,asc&size=${this.pageSize}&page=${this.currentPage}`;
 		super.getAllPageable();
+	}
+
+	public printBoletim(idBoletim: number) {
+		window.open(`${environment.url}/boletim/gerar/${idBoletim}`);
 	}
 
 }
