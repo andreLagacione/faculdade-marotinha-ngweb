@@ -6,7 +6,7 @@ export class NotaModel extends BaseResourceModel {
 	notaBimestre2?: number;
 	notaBimestre3?: number;
 	notaBimestre4?: number;
-	idBoletim?: number;
+	idBoletim?: number | string;
 
 	constructor() {
 		super();

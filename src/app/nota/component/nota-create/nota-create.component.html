@@ -1,48 +1,79 @@
 <div id="notas-control">
     <h4 class="title">Notas</h4>
 
-    <form [formGroup]="registerForm" class="mt-4">
-        <div class="row">
+    <form [formGroup]="registerForm" class="mt-4" (ngSubmit)="save()">
+        <div class="row form-group">
             <div class="col-md-3">
                 <label>Materia *</label>
-                <select class="inputs-form select" formControlName="materia">
+                <select class="inputs-form select" formControlName="materia"
+                    [ngClass]="{'erro': materia.invalid && (materia.dirty || materia.touched)}">
                     <option value="" selected="selected">Selecione</option>
-                    <option value="{{ materia.id }}" *ngFor="let materia of materiaList | async">{{ materia.name }}</option>
+                    <option value="{{ materia.id }}" *ngFor="let materia of materiaList | async">{{ materia.name }}
+                    </option>
                 </select>
+
+                <div class="texto-info erro" *ngIf="materia.invalid && (materia.dirty || materia.touched)">
+                    <small *ngIf="materia.errors.required">Selecione uma matéria</small>
+                </div>
             </div>
 
             <div class="col-md-2">
                 <label>1° Bimestre</label>
-                <input class="inputs-form" formControlName="bimestre1" />
+                <input type="number" class="inputs-form" formControlName="bimestre1"
+                    [ngClass]="{'erro': bimestre1.invalid && (bimestre1.dirty || bimestre1.touched)}" />
+
+                <div class="texto-info erro" *ngIf="bimestre1.invalid && (bimestre1.dirty || bimestre1.touched)">
+                    <small *ngIf="bimestre1.errors.min">A nota deve estar entre 0 e 10</small>
+                    <small *ngIf="bimestre1.errors.max">A nota deve estar entre 0 e 10</small>
+                </div>
             </div>
 
             <div class="col-md-2">
                 <label>2° Bimestre</label>
-                <input class="inputs-form" formControlName="bimestre2" />
+                <input type="number" class="inputs-form" formControlName="bimestre2"
+                    [ngClass]="{'erro': bimestre2.invalid && (bimestre2.dirty || bimestre2.touched)}" />
+
+                <div class="texto-info erro" *ngIf="bimestre2.invalid && (bimestre2.dirty || bimestre2.touched)">
+                    <small *ngIf="bimestre2.errors.min">A nota deve estar entre 0 e 10</small>
+                    <small *ngIf="bimestre2.errors.max">A nota deve estar entre 0 e 10</small>
+                </div>
             </div>
 
             <div class="col-md-2">
                 <label>3° Bimestre</label>
-                <input class="inputs-form" formControlName="bimestre3" />
+                <input type="number" class="inputs-form" formControlName="bimestre3"
+                    [ngClass]="{'erro': bimestre3.invalid && (bimestre3.dirty || bimestre3.touched)}" />
+
+                <div class="texto-info erro" *ngIf="bimestre3.invalid && (bimestre3.dirty || bimestre3.touched)">
+                    <small *ngIf="bimestre3.errors.min">A nota deve estar entre 0 e 10</small>
+                    <small *ngIf="bimestre3.errors.max">A nota deve estar entre 0 e 10</small>
+                </div>
             </div>
 
             <div class="col-md-2">
                 <label>4° Bimestre</label>
-                <input class="inputs-form" formControlName="bimestre4" />
+                <input type="number" class="inputs-form" formControlName="bimestre4"
+                    [ngClass]="{'erro': bimestre4.invalid && (bimestre4.dirty || bimestre4.touched)}" />
+
+                <div class="texto-info erro" *ngIf="bimestre4.invalid && (bimestre4.dirty || bimestre4.touched)">
+                    <small *ngIf="bimestre4.errors.min">A nota deve estar entre 0 e 10</small>
+                    <small *ngIf="bimestre4.errors.max">A nota deve estar entre 0 e 10</small>
+                </div>
             </div>
 
             <div class="col-md-1 d-flex flex-row justify-content-end align-items-end">
-                <app-buttons class="mr-2" [icon]="'fas fa-check'" [classes]="'auto thin primary'" [type]="'button'"
-                    (eventClick)="editar(curso.id)"></app-buttons>
+                <app-buttons class="mr-2" [icon]="'fas fa-check'" [classes]="'auto thin primary'" [type]="'submit'"
+                    [disabled]="registerForm.invalid || !registerForm.dirty">
+                </app-buttons>
 
                 <app-buttons [icon]="'fas fa-trash-alt'" [classes]="'auto thin danger'" [type]="'button'"
-                    (eventClick)="editar(curso.id)"></app-buttons>
+                    (eventClick)="editar()"></app-buttons>
             </div>
         </div>
         <!--/row-->
     </form>
 
-    <table class="default w-100 mt-3">
+    <table class="default w-100 mt-4" *ngIf="notasList.length">
         <thead>
             <tr>
                 <th>Matéria</th>
@@ -50,24 +81,25 @@
                 <th>2° Bimestre</th>
                 <th>3° Bimestre</th>
                 <th>4° Bimestre</th>
+                <th>Média Final</th>
                 <th class="col-acoes">Ações</th>
             </tr>
         </thead>
-    
+
         <tbody>
-            <!--  *ngFor="let curso of resourceList" -->
-            <tr>
-                <td>Banco de dados</td>
-                <td>7</td>
-                <td>7</td>
-                <td>7</td>
-                <td>7</td>
+            <tr *ngFor="let materia of notasList">
+                <td>{{ materia.nomeMateria }}</td>
+                <td>{{ materia.notaBimestre1 || 'N/A' }}</td>
+                <td>{{ materia.notaBimestre2 || 'N/A' }}</td>
+                <td>{{ materia.notaBimestre3 || 'N/A' }}</td>
+                <td>{{ materia.notaBimestre4 || 'N/A' }}</td>
+                <td>{{ materia.mediaFinal }}</td>
                 <td class="col-acoes">
                     <app-buttons [icon]="'fas fa-edit'" [classes]="'auto for-table'" [type]="'button'"
                         (eventClick)="editar(curso.id)"></app-buttons>
-                    
-                    <app-buttons class="ml-2" [icon]="'fas fa-trash-alt'" [classes]="'auto for-table danger'" [type]="'button'"
-                        (eventClick)="openConfirmModal(curso.id, curso.nome)"></app-buttons>
+
+                    <app-buttons class="ml-2" [icon]="'fas fa-trash-alt'" [classes]="'auto for-table danger'"
+                        [type]="'button'" (eventClick)="openConfirmModal(materia.id)"></app-buttons>
                 </td>
             </tr>
         </tbody>
