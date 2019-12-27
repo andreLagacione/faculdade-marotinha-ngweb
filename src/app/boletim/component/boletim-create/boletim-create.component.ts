@@ -1,14 +1,20 @@
 import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
-import { BaseResourceRegisterComponent } from 'src/app/shared/components/base-resource-register.component';
-import { BoletimModel } from '../../models/boletim.model';
 import { Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+// component
+import { BaseResourceRegisterComponent } from 'src/app/shared/components/base-resource-register.component';
+
+// model
+import { BoletimModel } from '../../models/boletim.model';
 import { ProfessorModel } from 'src/app/professor/models/professor.model';
 import { AlunoModel } from 'src/app/aluno/models/aluno.model';
+import { TurmaModel } from 'src/app/turma/models/turma.model';
+
+// service
 import { BoletimService } from '../../services/boletim.service';
 import { ControlElementsService } from 'src/app/shared/services/control-elements.service';
-import { takeUntil } from 'rxjs/operators';
-import { TurmaModel } from 'src/app/turma/models/turma.model';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-boletim-create',
