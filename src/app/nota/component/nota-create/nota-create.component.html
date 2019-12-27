@@ -89,10 +89,10 @@
         <tbody>
             <tr *ngFor="let materia of notasList">
                 <td>{{ materia.nomeMateria }}</td>
-                <td>{{ materia.notaBimestre1 || 'N/A' }}</td>
-                <td>{{ materia.notaBimestre2 || 'N/A' }}</td>
-                <td>{{ materia.notaBimestre3 || 'N/A' }}</td>
-                <td>{{ materia.notaBimestre4 || 'N/A' }}</td>
+                <td>{{ materia.notaBimestre1 }}</td>
+                <td>{{ materia.notaBimestre2 }}</td>
+                <td>{{ materia.notaBimestre3 }}</td>
+                <td>{{ materia.notaBimestre4 }}</td>
                 <td>{{ materia.mediaFinal }}</td>
                 <td class="col-acoes">
                     <app-buttons [icon]="'fas fa-edit'" [classes]="'auto for-table'" [type]="'button'"
