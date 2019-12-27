@@ -48,6 +48,7 @@ export class BoletimCreateComponent extends BaseResourceRegisterComponent<Boleti
 		if (this.regiterId) {
 			this.getById();
 			this.controlElementsService.pageName('Editar boletim');
+			this.boletimService.idBoletim = this.regiterId;
 		}
 	}
 
@@ -90,10 +91,10 @@ export class BoletimCreateComponent extends BaseResourceRegisterComponent<Boleti
 		const values = this.registerForm.value;
 		const boletim: BoletimModel = {
 			id: this.regiterId,
-		  ano: values.ano,
-		  idProfessor: values.idProfessor,
-		  idAluno: values.idAluno,
-		  idTurma: values.idTurma,
+		  	ano: values.ano,
+		  	idProfessor: values.idProfessor,
+		  	idAluno: values.idAluno,
+		  	idTurma: values.idTurma,
 		};
 
 		if (this.regiterId) {
