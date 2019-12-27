@@ -58,7 +58,7 @@ export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel>
 			);
 	}
 
-	protected update(resource: T) {
+	protected update(resource: T, stayInPage?: boolean) {
 		this.resourceService.update(resource)
 			.pipe(
 				takeUntil(this.unsubscribe$)
@@ -66,7 +66,12 @@ export abstract class BaseResourceRegisterComponent<T extends BaseResourceModel>
 			.subscribe(
 				_response => {
 					this.toasterService.success(_response['message'] || 'Item updated with success.');
-					this.toBack();
+
+					if (!stayInPage) {
+						this.toBack();
+					} else {
+						this.resetForm();
+					}
 				},
 				_error => this.toasterService.error(_error.error.message)
 			);
