@@ -23,4 +23,13 @@ export class NotaService extends BaseResourceService<NotaModel> {
 				catchError(this.mapsError)
 			);
 	}
+
+	public getNota(id: number): Observable<any> {
+		return this.http
+			.get(`${this.url}/nota/${id}`, this.httpJsonAuth())
+			.pipe(
+				map(this.extractData),
+				catchError(this.mapsError)
+			);
+	}
 }

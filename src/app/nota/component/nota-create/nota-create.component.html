@@ -96,7 +96,7 @@
                 <td>{{ materia.mediaFinal }}</td>
                 <td class="col-acoes">
                     <app-buttons [icon]="'fas fa-edit'" [classes]="'auto for-table'" [type]="'button'"
-                        (eventClick)="editar(curso.id)"></app-buttons>
+                        (eventClick)="editar(materia.id)"></app-buttons>
 
                     <app-buttons class="ml-2" [icon]="'fas fa-trash-alt'" [classes]="'auto for-table danger'"
                         [type]="'button'" (eventClick)="openConfirmModal(materia.id)"></app-buttons>

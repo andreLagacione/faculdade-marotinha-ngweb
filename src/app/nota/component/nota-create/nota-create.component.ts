@@ -36,7 +36,10 @@ export class NotaCreateComponent extends BaseResourceRegisterComponent<NotaModel
 				takeUntil(this.unsubscribe$)
 			)
 			.subscribe(
-				() => this.getNotas()
+				() => {
+					this.getNotas();
+					this.instaciateForm();
+				}
 			);
 
 		this.confirmModalService.confirmEvent$
@@ -95,7 +98,7 @@ export class NotaCreateComponent extends BaseResourceRegisterComponent<NotaModel
 		};
 
 		if (this.idNotaEdit) {
-			super.update(nota);
+			super.update(nota, true);
 			return false;
 		}
 
@@ -140,6 +143,18 @@ export class NotaCreateComponent extends BaseResourceRegisterComponent<NotaModel
 					this.toasterService.success(_response['message'] || 'Item removed with success.');
 					this.getNotas();
 				},
+				_error => this.toasterService.error(_error.error.message)
+			);
+	}
+
+	public editar(id: number) {
+		this.idNotaEdit = id;
+		this.notaService.getNota(this.idNotaEdit)
+			.pipe(
+				takeUntil(this.unsubscribe$)
+			)
+			.subscribe(
+				_response => this.patchaValuesForm(_response),
 				_error => this.toasterService.error(_error.error.message)
 			);
 	}
