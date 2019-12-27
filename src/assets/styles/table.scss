@@ -114,6 +114,10 @@ table,
 
     .col-acoes {
         width: 80px;
+
+        &.three-buttons {
+            width: 113px;
+        }
     }
 
     .col-checkbox {
