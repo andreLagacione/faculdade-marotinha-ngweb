@@ -60,7 +60,7 @@
     </footer>
 </div>
 
-<div class="text-alert primary block lg" *ngIf="messageNoData">{{ messageNoData }}</div>
+<div class="alert alert-primary mt-4" *ngIf="messageNoData">{{ messageNoData }}</div>
 
 <app-sidebar-filter (eventClear)="filterClear()">
     <content>
