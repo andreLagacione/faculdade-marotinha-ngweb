@@ -1,7 +1,4 @@
 <header id="header-pagina" class="d-flex flex-row align-items-center justify-content-end">
-    <!-- <app-buttons [linkImage]="'assets/images/funil.svg'" [classes]="'auto'" [type]="'button'" [text]="'Mais Filtros'"
-        (eventClick)="controlarFiltros()"></app-buttons> -->
-
     <app-buttons [icon]="'fas fa-plus'" [classes]="'auto primary'" [type]="'button'" [text]="'Cadastrar'"
         (eventClick)="create()"></app-buttons>
 </header>
@@ -58,28 +55,5 @@
 </div>
 
 <div class="alert alert-primary mt-4" *ngIf="messageNoData">{{ messageNoData }}</div>
-
-<app-sidebar-filter (eventClear)="filterClear()">
-    <content>
-        <!-- <form novalidate [formGroup]="sidebarFormFilter">
-			<div class="form-group row">
-				<div class="col-md-6">
-					<label>Tipo CT-e</label>
-					<select class="inputs-form select" formControlName="tipoCte">
-						<option value="">Todos</option>
-						<option value="0">Normal</option>
-						<option value="1">Complementar</option>
-						<option value="2">Quinzenal</option>
-					</select>
-				</div>
-
-				<div class="col-md-6">
-					<label>Número da capa</label>
-					<input type="number" class="inputs-form" placeholder="Somente números" formControlName="numeroCapa" />
-				</div>
-			</div>
-		</form> -->
-    </content>
-</app-sidebar-filter>
 
 <app-confirm-modal></app-confirm-modal>
