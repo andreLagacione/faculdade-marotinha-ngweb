@@ -17,11 +17,11 @@ import { BoletimService } from '../../services/boletim.service';
 import { ControlElementsService } from 'src/app/shared/services/control-elements.service';
 
 @Component({
-  selector: 'app-boletim-create',
-  templateUrl: './boletim-create.component.html'
+	selector: 'app-boletim-create',
+	templateUrl: './boletim-create.component.html'
 })
 export class BoletimCreateComponent extends BaseResourceRegisterComponent<BoletimModel> implements OnInit, OnDestroy {
-  	public professorList: Observable<ProfessorModel[]>;
+	public professorList: Observable<ProfessorModel[]>;
 	public alunoList: Observable<AlunoModel[]>;
 	public turmaList: Observable<TurmaModel[]>;
 	public anoList: number[] = [];
@@ -85,22 +85,22 @@ export class BoletimCreateComponent extends BaseResourceRegisterComponent<Boleti
 	}
 
 	private getAnos() {
-	  const anoAtual = new Date().getFullYear();
-	  const anoAtualMaisDez = anoAtual + 10;
+		const anoAtual = new Date().getFullYear();
+		const anoAtualMaisDez = anoAtual + 10;
 
-	  for (let i = 2019; i <= anoAtualMaisDez; i++) {
-  		this.anoList.push(i);
-  	}
+		for (let i = 2019; i <= anoAtualMaisDez; i++) {
+			this.anoList.push(i);
+		}
 	}
 
 	public save() {
 		const values = this.registerForm.value;
 		const boletim: BoletimModel = {
 			id: this.regiterId,
-		  	ano: values.ano,
-		  	idProfessor: values.idProfessor,
-		  	idAluno: values.idAluno,
-		  	idTurma: values.idTurma,
+			ano: values.ano,
+			idProfessor: values.idProfessor,
+			idAluno: values.idAluno,
+			idTurma: values.idTurma,
 		};
 
 		if (this.regiterId) {
@@ -114,9 +114,9 @@ export class BoletimCreateComponent extends BaseResourceRegisterComponent<Boleti
 	private patchaValuesForm(values: object) {
 		this.registerForm.patchValue({
 			ano: values['ano'],
-		  idProfessor: values['idProfessor'],
-		  idAluno: values['idAluno'],
-		  idTurma: values['idTurma'],
+			idProfessor: values['idProfessor'],
+			idAluno: values['idAluno'],
+			idTurma: values['idTurma'],
 		});
 
 		this.registerForm.markAsDirty();
