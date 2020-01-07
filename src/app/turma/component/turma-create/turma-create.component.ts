@@ -6,6 +6,9 @@ import { takeUntil } from 'rxjs/operators';
 // component
 import { BaseResourceRegisterComponent } from 'src/app/shared/components/base-resource-register.component';
 
+// classes
+import { Commons } from 'src/app/shared/commons/commons.class';
+
 // models
 import { TurmaModel } from '../../models/turma.model';
 import { ProfessorModel } from 'src/app/professor/models/professor.model';
@@ -62,12 +65,7 @@ export class TurmaCreateComponent extends BaseResourceRegisterComponent<TurmaMod
 	}
 
 	private buildAnoLista() {
-		const anoAtual = new Date().getFullYear();
-		const anoAtualMaisDez = anoAtual + 10;
-
-		for (let i = 2019; i <= anoAtualMaisDez; i++) {
-			this.anoLista.push(i);
-		}
+		this.anoLista = Commons.generateYears();
 	}
 
 	private instaciateForm() {

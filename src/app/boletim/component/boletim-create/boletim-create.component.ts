@@ -6,6 +6,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 // component
 import { BaseResourceRegisterComponent } from 'src/app/shared/components/base-resource-register.component';
 
+// clases
+import { Commons } from 'src/app/shared/commons/commons.class';
+
 // model
 import { BoletimModel } from '../../models/boletim.model';
 import { ProfessorModel } from 'src/app/professor/models/professor.model';
@@ -85,12 +88,7 @@ export class BoletimCreateComponent extends BaseResourceRegisterComponent<Boleti
 	}
 
 	private getAnos() {
-		const anoAtual = new Date().getFullYear();
-		const anoAtualMaisDez = anoAtual + 10;
-
-		for (let i = 2019; i <= anoAtualMaisDez; i++) {
-			this.anoList.push(i);
-		}
+		this.anoList = Commons.generateYears();
 	}
 
 	public save() {
