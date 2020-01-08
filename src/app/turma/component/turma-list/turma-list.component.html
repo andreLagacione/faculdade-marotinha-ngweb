@@ -1,6 +1,6 @@
 <header id="header-pagina" class="d-flex flex-row align-items-center justify-content-end">
-    <!-- <app-buttons [linkImage]="'assets/images/funil.svg'" [classes]="'auto'" [type]="'button'" [text]="'Mais Filtros'"
-        (eventClick)="controlarFiltros()"></app-buttons> -->
+    <app-buttons class="mr-3" [linkImage]="'assets/images/funil.svg'" [classes]="'auto'" [type]="'button'"
+        [text]="'Mais Filtros'" (eventClick)="openSidbarFilter()"></app-buttons>
 
     <app-buttons [icon]="'fas fa-plus'" [classes]="'auto primary'" [type]="'button'" [text]="'Cadastrar'"
         (eventClick)="create()"></app-buttons>
@@ -28,9 +28,11 @@
             <td class="col-acoes">
                 <app-buttons [icon]="'fas fa-edit'" [classes]="'auto for-table'" [type]="'button'"
                     (eventClick)="editar(turma.id)"></app-buttons>
-                
-                <app-buttons class="ml-2" [icon]="'fas fa-trash-alt'" [classes]="'auto for-table danger'" [type]="'button'"
-                    (eventClick)="openConfirmModal(turma.id, 'class for course ' + turma.curso + ' in year of ' + turma.ano)"></app-buttons>
+
+                <app-buttons class="ml-2" [icon]="'fas fa-trash-alt'" [classes]="'auto for-table danger'"
+                    [type]="'button'"
+                    (eventClick)="openConfirmModal(turma.id, 'class for course ' + turma.curso + ' in year of ' + turma.ano)">
+                </app-buttons>
             </td>
         </tr>
     </tbody>
@@ -63,24 +65,44 @@
 
 <app-sidebar-filter (eventClear)="filterClear()">
     <content>
-        <!-- <form novalidate [formGroup]="sidebarFormFilter">
-			<div class="form-group row">
-				<div class="col-md-6">
-					<label>Tipo CT-e</label>
-					<select class="inputs-form select" formControlName="tipoCte">
-						<option value="">Todos</option>
-						<option value="0">Normal</option>
-						<option value="1">Complementar</option>
-						<option value="2">Quinzenal</option>
-					</select>
-				</div>
+        <form novalidate [formGroup]="sidebarFormFilter">
+            <div class="form-group row">
+                <div class="col-md-3">
+                    <label>Ano</label>
+                    <select class="inputs-form select" formControlName="ano">
+                        <option value="">Selecione</option>
+                        <option value="{{ year }}" *ngFor="let year of yearsList">{{ year }}</option>
+                    </select>
+                </div>
 
-				<div class="col-md-6">
-					<label>Número da capa</label>
-					<input type="number" class="inputs-form" placeholder="Somente números" formControlName="numeroCapa" />
-				</div>
-			</div>
-		</form> -->
+                <div class="col-md-9">
+                    <label>Curso</label>
+                    <select class="inputs-form select" formControlName="idCurso">
+                        <option value="">Selecione</option>
+                        <option value="{{ curso.id }}" *ngFor="let curso of cursoList | async">{{ curso.nome }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-9">
+                    <label>Professor</label>
+                    <select class="inputs-form select" formControlName="idProfessor">
+                        <option value="">Selecione</option>
+                        <option value="{{ professor.id }}" *ngFor="let professor of professorList | async">
+                            {{ professor.name }}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Período</label>
+                    <select class="inputs-form select" formControlName="periodo">
+                        <option value="">Selecione</option>
+                        <option value="{{ periodo }}" *ngFor="let periodo of periodoList">{{ periodo }}</option>
+                    </select>
+                </div>
+            </div>
+        </form>
     </content>
 </app-sidebar-filter>
 
