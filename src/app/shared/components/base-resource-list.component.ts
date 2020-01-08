@@ -80,7 +80,14 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 	}
 
 	protected getAllPageable() {
-		const params = {}; // FilterManipulate.optionsWithValue(this.sidebarFormFilter.value);
+		let params = {};
+
+		if (this.sidebarFormFilter && this.sidebarFormFilter.value) {
+			params = FilterManipulate.optionsWithValue(this.sidebarFormFilter.value);
+		}
+
+
+		console.log(params);
 
 		this.resourceService.getAllPageable(this.baseParamsPage, params)
 			.pipe(
