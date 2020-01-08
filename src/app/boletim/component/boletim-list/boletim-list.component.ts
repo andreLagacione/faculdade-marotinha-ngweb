@@ -1,21 +1,23 @@
 import { Component, OnInit, Injector } from '@angular/core';
+import { Observable } from 'rxjs';
+import { FormGroup, FormControl } from '@angular/forms';
 
 // component
 import { BaseResouceListComponent } from 'src/app/shared/components/base-resource-list.component';
 
 // model
 import { BoletimModel } from '../../models/boletim.model';
+import { AlunoModel } from 'src/app/aluno/models/aluno.model';
+import { TurmaModel } from 'src/app/turma/models/turma.model';
+
+// clasess
+import { environment } from 'src/environments/environment';
+import { Commons } from 'src/app/shared/commons/commons.class';
 
 // service
 import { BoletimService } from '../../services/boletim.service';
 import { ControlElementsService } from 'src/app/shared/services/control-elements.service';
-import { environment } from 'src/environments/environment';
-import { AlunoModel } from 'src/app/aluno/models/aluno.model';
 import { ProfessorModel } from 'src/app/professor/models/professor.model';
-import { TurmaModel } from 'src/app/turma/models/turma.model';
-import { Commons } from 'src/app/shared/commons/commons.class';
-import { Observable } from 'rxjs';
-import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
 	selector: 'app-boletim-list',
