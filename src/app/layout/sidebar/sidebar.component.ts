@@ -18,15 +18,15 @@ export class SidebarComponent {
 		icon: 'user-graduate',
 		uri: '/alunos'
 	}, {
-		name: 'Cursos',
-		icon: 'book-reader',
-		uri: '/cursos'
-	}, {
 		name: 'Boletins',
 		icon: 'clipboard',
 		uri: '/boletins'
 	}, {
-		name: 'materias',
+		name: 'Cursos',
+		icon: 'book-reader',
+		uri: '/cursos'
+	}, {
+		name: 'Materias',
 		icon: 'book',
 		uri: '/materias'
 	}, {
