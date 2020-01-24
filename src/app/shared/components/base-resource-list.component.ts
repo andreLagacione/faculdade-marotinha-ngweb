@@ -86,9 +86,6 @@ export abstract class BaseResouceListComponent<T extends BaseResourceModel> impl
 			params = FilterManipulate.optionsWithValue(this.sidebarFormFilter.value);
 		}
 
-
-		console.log(params);
-
 		this.resourceService.getAllPageable(this.baseParamsPage, params)
 			.pipe(
 				takeUntil(this.unsubscribe$)
