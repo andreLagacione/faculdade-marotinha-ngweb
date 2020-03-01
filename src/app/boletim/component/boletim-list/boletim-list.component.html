@@ -28,7 +28,7 @@
                     (eventClick)="editar(boletim.id)"></app-buttons>
                 
                 <app-buttons class="ml-2" [icon]="'fas fa-trash-alt'" [classes]="'auto for-table danger'" [type]="'button'"
-                    (eventClick)="openConfirmModal(boletim.id, boletim.nome)"></app-buttons>
+                    (eventClick)="openConfirmModal(boletim.id, 'boletim of ' + boletim.nomeAluno)"></app-buttons>
 
                 <app-buttons [disabled]="!boletim.canPrint" class="ml-2" [icon]="'fas fa-print'" [classes]="'auto for-table secondary'" [type]="'button'"
                     (eventClick)="printBoletim(boletim.id)"></app-buttons>
