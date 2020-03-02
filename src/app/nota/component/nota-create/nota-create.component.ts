@@ -12,16 +12,16 @@ import { takeUntil } from 'rxjs/operators';
 import { ConfirmModalService } from 'src/app/confirm-modal/services/confirm-modal.service';
 
 @Component({
-  selector: 'app-nota-create',
-  templateUrl: './nota-create.component.html',
-  styleUrls: ['./nota-create.component.scss']
+	selector: 'app-nota-create',
+	templateUrl: './nota-create.component.html',
+	styleUrls: ['./nota-create.component.scss']
 })
 export class NotaCreateComponent extends BaseResourceRegisterComponent<NotaModel> implements OnInit, OnDestroy {
-  public materiaList: Observable<MateriaModel[]>;
-  public notasList: NotaBoletimModel[] = [];
-  private idBoletim: string;
-  private idNotaEdit: number;
-  private idNotaRemove: number;
+	public materiaList: Observable<MateriaModel[]>;
+	public notasList: NotaBoletimModel[] = [];
+	private idBoletim: string;
+	private idNotaEdit: number;
+	private idNotaRemove: number;
 
 	constructor(
 		protected injector: Injector,
@@ -89,12 +89,12 @@ export class NotaCreateComponent extends BaseResourceRegisterComponent<NotaModel
 		const values = this.registerForm.value;
 		const nota: NotaModel = {
 			id: this.idNotaEdit,
-		  	idMateria: values.materia,
-		  	notaBimestre1: values.bimestre1,
-		  	notaBimestre2: values.bimestre2,
-		  	notaBimestre3: values.bimestre3,
-		  	notaBimestre4: values.bimestre4,
-		  	idBoletim: this.idBoletim
+			idMateria: values.materia,
+			notaBimestre1: values.bimestre1,
+			notaBimestre2: values.bimestre2,
+			notaBimestre3: values.bimestre3,
+			notaBimestre4: values.bimestre4,
+			idBoletim: this.idBoletim
 		};
 
 		if (this.idNotaEdit) {
@@ -108,10 +108,10 @@ export class NotaCreateComponent extends BaseResourceRegisterComponent<NotaModel
 	private patchaValuesForm(values: object) {
 		this.registerForm.patchValue({
 			materia: values['idMateria'],
-		  	bimestre1: values['notaBimestre1'],
-		  	bimestre2: values['notaBimestre2'],
-		  	bimestre3: values['notaBimestre3'],
-		  	bimestre4: values['notaBimestre4']
+			bimestre1: values['notaBimestre1'],
+			bimestre2: values['notaBimestre2'],
+			bimestre3: values['notaBimestre3'],
+			bimestre4: values['notaBimestre4']
 		});
 
 		this.registerForm.markAsDirty();
@@ -159,8 +159,9 @@ export class NotaCreateComponent extends BaseResourceRegisterComponent<NotaModel
 			);
 	}
 
-
-
+	public clearForm() {
+		this.instaciateForm();
+	}
 
 	get materia() {
 		return this.registerForm.get('materia');

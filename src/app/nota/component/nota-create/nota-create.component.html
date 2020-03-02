@@ -66,8 +66,8 @@
                     [disabled]="registerForm.invalid || !registerForm.dirty">
                 </app-buttons>
 
-                <app-buttons [icon]="'fas fa-trash-alt'" [classes]="'auto thin danger'" [type]="'button'"
-                    (eventClick)="editar()"></app-buttons>
+                <app-buttons [icon]="'fas fa-times'" [classes]="'auto thin danger'" [type]="'button'"
+                    (eventClick)="clearForm()"></app-buttons>
             </div>
         </div>
         <!--/row-->
